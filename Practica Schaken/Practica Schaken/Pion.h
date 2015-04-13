@@ -11,7 +11,7 @@ class Pion
 		Pion();
 		Pion(enum Color colornum, enum Type typenum);
 		enum Color getColor();
-		char getSymbol();
+		char getType();
 	private:
 		enum Color color;
 		enum Type type;

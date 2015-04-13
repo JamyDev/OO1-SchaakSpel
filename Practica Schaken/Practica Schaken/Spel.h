@@ -11,8 +11,7 @@ class Spel
 	public:
 		Spel();
 		~Spel();
-		void startSpel();
-		bool isLegaleZet(Pion &pion, int naarX, int naarY);
+		bool isValidMove(Pion &pion, int fromX, int fromY, int toX, int toY);
 		Spelbord* getSpelbord();
 
 	private:
