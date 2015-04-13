@@ -42,5 +42,7 @@ char Pion::getSymbol()
 			return '+';
 		case QUEEN:
 			return 'W';
+		default:
+			return ' ';
 	}
 }

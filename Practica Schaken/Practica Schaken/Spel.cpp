@@ -23,7 +23,8 @@ Spel::~Spel()
 
 void Spel::startSpel()
 {
-	while (true)
+	bool running = true;
+	while (running)
 	{
 		spelbord->printBoard();
 		std::cout << "[" << ((activePlayer == WHITE) ? "WHITE" : "BLACK") << "] Please enter your move (e.g.: B4 B6 (element on B4 to B6)): ";
@@ -109,6 +110,7 @@ bool Spel::isValidMove(Pion* pion, int fromX, int fromY, int toX, int toY)
 			//de rest komt nog
 		}
 	}
+	return false;
 }
 
 Spelbord* Spel::getSpelbord()
@@ -121,6 +123,6 @@ Spelbord* Spel::getSpelbord()
 void flush_stdin()
 {
 	char c;
-	while ((c = getchar()) != '\n' && c != EOF);
+	while ((c = (char) getchar()) != '\n' && c != EOF);
 }
 
