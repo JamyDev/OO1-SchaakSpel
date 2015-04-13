@@ -77,4 +77,3 @@ void Spelbord::printBoard()
 
 	std::cout << "\n";
 }
-
