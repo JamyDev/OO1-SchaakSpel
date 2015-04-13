@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Spel.h"
 
+void flush_stdin();
 
 Spel::Spel()
 {
@@ -24,14 +25,15 @@ void Spel::startSpel()
 		char fromC, toC;
 		int fromX, fromY, toX, toY;
 		
-		scanf("%c%i %c%i", &fromC, &fromX, &toC, &toX);
+		scanf("%c%i %c%i", &fromC, &fromY, &toC, &toY);
+		flush_stdin();
 		
 		// Indexing on 0 but board has 1
-		fromX--;
-		toX--;
+		fromY--;
+		toY--;
 
-		fromY = (toupper(fromC) - 'A');
-		toY = (toupper(toC) - 'A');
+		fromX = (toupper(fromC) - 'A');
+		toX = (toupper(toC) - 'A');
 		
 		// Check if origin exists
 		if (fromX < 0 || fromX > 7 ||
@@ -98,3 +100,12 @@ Spelbord* Spel::getSpelbord()
 {
 	return spelbord;
 }
+
+/* Flush the stdin buffer (scanf leaves \n there)
+   This way fgets on stdin doesn't just skip. */
+void flush_stdin()
+{
+	char c;
+	while ((c = getchar()) != '\n' && c != EOF);
+}
+
