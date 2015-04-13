@@ -16,7 +16,12 @@ Pion::Color Pion::getColor()
 	return color;
 }
 
-char Pion::getType()
+Pion::Type Pion::getType()
+{
+	return type;
+}
+
+char Pion::getSymbol()
 {
 	switch (type)
 	{
