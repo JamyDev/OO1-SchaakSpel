@@ -7,8 +7,9 @@ int main(void)
 {
 	std::cout << "Chess by Jamy and Jeroen" << "\n" <<
 		"Shall we play a game?";
-	_getche();
+	//_getche();
 	Spel* spel = new Spel();
+	spel->getSpelbord()->printBoard();
 
 	delete spel;
 	return 0;

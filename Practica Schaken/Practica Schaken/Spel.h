@@ -13,6 +13,7 @@ class Spel
 		~Spel();
 		void startSpel();
 		bool isLegaleZet(Pion &pion, int naarX, int naarY);
+		Spelbord* getSpelbord();
 
 	private:
 		Spelbord *spelbord;

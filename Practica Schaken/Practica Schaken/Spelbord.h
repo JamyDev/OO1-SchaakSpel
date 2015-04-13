@@ -17,7 +17,7 @@ class Spelbord
 		void printBoard();
 	private:
 		Zet* history;
-		Pion board[VELDGROOTTE][VELDGROOTTE];
+		Pion* board[VELDGROOTTE][VELDGROOTTE];
 		Pion defeated[];
 };
 #endif

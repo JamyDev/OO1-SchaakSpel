@@ -9,3 +9,8 @@ Spel::~Spel()
 {
 	delete spelbord;
 }
+
+Spelbord* Spel::getSpelbord()
+{
+	return spelbord;
+}
