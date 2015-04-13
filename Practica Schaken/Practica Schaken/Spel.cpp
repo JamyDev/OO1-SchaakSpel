@@ -20,11 +20,15 @@ void Spel::startSpel()
 	while (true)
 	{
 		spelbord->printBoard();
-		std::cout << "Please enter your move (e.g.: B4 B6 (element on B4 to B6)): ";
+		std::cout << "[" << ((activePlayer == WHITE) ? "WHITE" : "BLACK") << "] Please enter your move (e.g.: B4 B6 (element on B4 to B6)): ";
 		char fromC, toC;
 		int fromX, fromY, toX, toY;
 		
 		scanf("%c%i %c%i", &fromC, &fromX, &toC, &toX);
+		
+		// Indexing on 0 but board has 1
+		fromX--;
+		toX--;
 
 		fromY = (toupper(fromC) - 'A');
 		toY = (toupper(toC) - 'A');
@@ -44,6 +48,12 @@ void Spel::startSpel()
 			continue;
 		}
 
+		if (p->getColor() != activePlayer)
+		{
+			std::cout << "Illegal move, it's " << ((activePlayer == WHITE) ? "white's" : "black's") << " turn.";
+			continue;
+		}
+
 		// Check if target exists
 		if (toX < 0 || toX > 7 ||
 			toY < 0 || toY > 7)
@@ -52,7 +62,12 @@ void Spel::startSpel()
 			continue;
 		}
 
-		spelbord->move(p, fromX, fromY, toX, toY);
+		if (spelbord->move(p, fromX, fromY, toX, toY))
+		{
+			activePlayer = (activePlayer == WHITE) ? BLACK : WHITE;
+		} else {
+			std::cout << "Illegal move.";
+		}
 	}
 }
 
@@ -66,12 +81,12 @@ bool Spel::isValidMove(Pion &pion, int fromX, int fromY, int toX, int toY)
 		{
 		case Pion::SOLDIER:
 			for (j = fromY; j >= toY; j--)
-				if (spelbord->board[fromX][j] != NULL)
+				if (spelbord->board[j][fromX] != NULL)
 					isValid = false;
 			return isValid;
 
 		case Pion::HORSE:
-			if (spelbord->board[toX][toY]->getType() == WHITE)
+			if (spelbord->board[toY][toX]->getColor() == WHITE)
 				isValid = false;
 			return isValid;
 			//de rest komt nog
