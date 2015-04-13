@@ -1,15 +1,59 @@
 #include <stdlib.h>
+#include <string.h>
+#include <iostream>
 #include "Spel.h"
 
 
 Spel::Spel()
 {
-	spelbord = new Spelbord;
+	spelbord = new Spelbord(this);
 	activePlayer = WHITE;
 }
 Spel::~Spel()
 {
 	delete spelbord;
+}
+
+
+void Spel::startSpel()
+{
+	while (true)
+	{
+		spelbord->printBoard();
+		std::cout << "Please enter your move (e.g.: B4 B6 (element on B4 to B6)): ";
+		char fromC, toC;
+		int fromX, fromY, toX, toY;
+		
+		scanf("%c%i %c%i", &fromC, &fromX, &toC, &toX);
+
+		fromY = (toupper(fromC) - 'A');
+		toY = (toupper(toC) - 'A');
+		
+		// Check if origin exists
+		if (fromX < 0 || fromX > 7 ||
+			fromY < 0 || fromY > 7)
+		{
+			std::cout << "Invalid postion for source.";
+			continue;
+		}
+		Pion* p = spelbord->board[fromY][fromX];
+
+		if (p == NULL)
+		{
+			std::cout << fromC << fromX << " doesn't exist.";
+			continue;
+		}
+
+		// Check if target exists
+		if (toX < 0 || toX > 7 ||
+			toY < 0 || toY > 7)
+		{
+			std::cout << "Invalid postion for target.";
+			continue;
+		}
+
+		spelbord->move(p, fromX, fromY, toX, toY);
+	}
 }
 
 bool Spel::isValidMove(Pion &pion, int fromX, int fromY, int toX, int toY)

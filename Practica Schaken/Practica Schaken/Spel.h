@@ -11,6 +11,7 @@ class Spel
 	public:
 		Spel();
 		~Spel();
+		void startSpel();
 		bool isValidMove(Pion &pion, int fromX, int fromY, int toX, int toY);
 		Spelbord* getSpelbord();
 

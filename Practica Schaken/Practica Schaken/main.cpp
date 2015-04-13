@@ -9,6 +9,7 @@ int main(void)
 		"Shall we play a game?";
 	//_getche();
 	Spel* spel = new Spel();
+	spel->startSpel();
 	spel->getSpelbord()->printBoard();
 
 	delete spel;
