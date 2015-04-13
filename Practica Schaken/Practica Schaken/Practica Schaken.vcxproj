@@ -78,6 +78,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Pion.h" />
+    <ClInclude Include="Spel.h" />
+    <ClInclude Include="Spelbord.h" />
+    <ClInclude Include="Zet.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Pion.cpp" />
+    <ClCompile Include="Spel.cpp" />
+    <ClCompile Include="Spelbord.cpp" />
+    <ClCompile Include="Zet.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

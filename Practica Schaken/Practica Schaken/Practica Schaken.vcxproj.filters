@@ -18,5 +18,28 @@
     <ClInclude Include="Pion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Spel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spelbord.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Zet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Spel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Spelbord.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Zet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
