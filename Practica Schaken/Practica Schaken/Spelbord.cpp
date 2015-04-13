@@ -51,8 +51,21 @@ void Spelbord::initializeBoard()
 	board[0][3] = new Pion(Pion::Color::BLACK, Pion::Type::QUEEN);
 }
 
-bool Spelbord::canMove(Pion pion, int fromX, int fromY, int toX, int toY)
+bool Spelbord::canMove(Pion* pion, int fromX, int fromY, int toX, int toY)
 {
+	switch (pion->getType())
+	{
+		case Pion::Type::SOLDIER:
+			bool first = false, valid = false;
+			first = (pion->getColor() == Pion::Color::WHITE && fromY == 6) ||
+					(pion->getColor() == Pion::Color::BLACK && fromY == 1);	
+
+			valid = Zet::canSoldMove(fromX, fromY, toX, toY, first, pion->getColor());
+			valid |= Zet::canSoldAttack(fromX, fromY, toX, toY, pion->getColor());
+
+			return valid;
+		// Rest cases komen hier
+	}
 	return false;
 }
 
