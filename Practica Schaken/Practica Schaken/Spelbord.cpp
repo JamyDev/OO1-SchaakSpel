@@ -62,17 +62,17 @@ bool Spelbord::move(Pion* pion, int fromX, int fromY, int toX, int toY)
 	valid &= spel->isValidMove(*pion, fromX, fromY, toX, toY);
 	if (valid)
 	{
-		if (board[toX][toY] == NULL)
-			board[toX][toY] = pion;
-		else if (board[toX][toY]->getColor() != pion->getColor())
+		if (board[toY][toX] == NULL)
+			board[toY][toX] = pion;
+		else if (board[toY][toX]->getColor() != pion->getColor())
 		{
-			addToDefeated(board[toX][toY], board[toX][toY]->getColor());
-			board[toX][toY] = pion;
+			addToDefeated(board[toY][toX], board[toY][toX]->getColor());
+			board[toY][toX] = pion;
 
 		}
 		history = new Zet[historySize + 1];
 		history[historySize] = Zet(pion, fromX, fromY, toX, toY);
-		board[fromX][fromY] = NULL;
+		board[fromY][fromX] = NULL;
 		historySize++;
 		return true;
 	}
