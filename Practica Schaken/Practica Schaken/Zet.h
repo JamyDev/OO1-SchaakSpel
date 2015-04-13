@@ -1,3 +1,8 @@
+/*
+* Zet.h
+* Authors: Jeroen Ceyssens
+*/
+
 #ifndef ZET_H
 #define ZET_H
 #include "Pion.h"

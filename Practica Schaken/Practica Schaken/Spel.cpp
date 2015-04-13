@@ -1,3 +1,8 @@
+/*
+* Spel.cpp
+* Authors: Jamy Timmermans, Jeroen Ceyssens
+*/
+
 #include <stdlib.h>
 #include <string.h>
 #include <iostream>
@@ -46,7 +51,7 @@ void Spel::startSpel()
 
 		if (p == NULL)
 		{
-			std::cout << fromC << fromX << " doesn't exist.";
+			std::cout << fromC << (fromY + 1) << " doesn't exist.";
 			continue;
 		}
 
@@ -73,13 +78,13 @@ void Spel::startSpel()
 	}
 }
 
-bool Spel::isValidMove(Pion &pion, int fromX, int fromY, int toX, int toY)
+bool Spel::isValidMove(Pion* pion, int fromX, int fromY, int toX, int toY)
 {
 	int i, j;
 	bool isValid = true;
 	if (activePlayer == WHITE)
 	{
-		switch (pion.getType())
+		switch (pion->getType())
 		{
 		case Pion::SOLDIER:
 			for (j = fromY; j >= toY; j--)
@@ -90,6 +95,16 @@ bool Spel::isValidMove(Pion &pion, int fromX, int fromY, int toX, int toY)
 		case Pion::HORSE:
 			if (spelbord->board[toY][toX]->getColor() == WHITE)
 				isValid = false;
+			return isValid;
+			//de rest komt nog
+		}
+	} else {
+		switch (pion->getType())
+		{
+		case Pion::SOLDIER:
+			for (j = fromY; j < toY; j++)
+				if (spelbord->board[j][fromX] != NULL)
+					isValid = false;
 			return isValid;
 			//de rest komt nog
 		}

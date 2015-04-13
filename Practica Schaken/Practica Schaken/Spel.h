@@ -1,3 +1,8 @@
+/*
+* Spel.h
+* Authors: Jamy Timmermans, Jeroen Ceyssens
+*/
+
 #ifndef SPEL_H
 #define SPEL_H
 
@@ -12,7 +17,7 @@ class Spel
 		Spel();
 		~Spel();
 		void startSpel();
-		bool isValidMove(Pion &pion, int fromX, int fromY, int toX, int toY);
+		bool isValidMove(Pion* pion, int fromX, int fromY, int toX, int toY);
 		Spelbord* getSpelbord();
 
 	private:

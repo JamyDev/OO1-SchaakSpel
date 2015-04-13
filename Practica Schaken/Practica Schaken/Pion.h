@@ -1,3 +1,8 @@
+/*
+* Pion.h
+* Authors: Jamy Timmermans, Jeroen Ceyssens
+*/
+
 #ifndef PION_H
 #define PION_H
 class Pion

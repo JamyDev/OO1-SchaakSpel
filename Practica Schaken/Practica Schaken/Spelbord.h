@@ -1,3 +1,8 @@
+/*
+* Spelbord.h
+* Authors: Jamy Timmermans
+*/
+
 #ifndef SPELBORD_H
 #define SPELBORD_H
 #include "Pion.h"

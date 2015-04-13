@@ -1,3 +1,8 @@
+/*
+* Zet.cpp
+* Authors: Jeroen Ceyssens
+*/
+
 #include <stdlib.h>
 #include "Zet.h"
 #include "Spelbord.h"
@@ -42,18 +47,18 @@ bool Zet::canSoldMove(int fromX, int fromY, int toX, int toY, bool isFirst, enum
 		return false;
 	if (color == Pion::BLACK)
 	{
-		if (fromX == toX && fromY + 1 == toY)
+		if (fromX == toX && fromY - 1 == toY)
 			return true;
-		else if (fromX == toX && fromY + 2 == toY && isFirst == true)
+		else if (fromX == toX && fromY - 2 == toY && isFirst == true)
 			return true;
 		else
 			return false;
 	}
 	else if (color == Pion::WHITE)
 	{
-		if (fromX == toX && fromY - 1 == toY)
+		if (fromX == toX && fromY + 1 == toY)
 			return true;
-		else if (fromX == toX && fromY - 2 == toY && isFirst == true)
+		else if (fromX == toX && fromY + 2 == toY && isFirst == true)
 			return true;
 		else
 			return false;
@@ -68,18 +73,18 @@ bool Zet::canSoldAttack(int fromX, int fromY, int toX, int toY, enum Pion::Color
 		return false;
 	if (color == Pion::BLACK)
 	{
-		if (fromX + 1 == toX && fromY + 1 == toY)
+		if (fromX - 1 == toX && fromY - 1 == toY)
 			return true;
-		else if (fromX - 1 == toX && fromY + 1 == toY)
+		else if (fromX + 1 == toX && fromY - 1 == toY)
 			return true;
 		else
 			return false;
 	}
 	else if (color == Pion::WHITE)
 	{
-		if (fromX + 1 == toX && fromY - 1 == toY)
+		if (fromX - 1 == toX && fromY + 1 == toY)
 			return true;
-		else if (fromX - 1 == toX && fromY - 1 == toY)
+		else if (fromX + 1 == toX && fromY + 1 == toY)
 			return true;
 		else
 			return false;

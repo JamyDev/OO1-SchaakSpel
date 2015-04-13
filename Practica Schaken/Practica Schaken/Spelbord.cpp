@@ -1,3 +1,8 @@
+/*
+ * Spelbord.cpp
+ * Authors: Jamy Timmermans, Jeroen Ceyssens
+ */
+
 #include <iostream>
 #include "Spelbord.h"
 #include "Spel.h"
@@ -12,7 +17,7 @@ Spelbord::Spelbord(Spel* spel1)
 
 Spelbord::~Spelbord()
 {
-
+	// TODO: delete all Pionnen en ander geheugen
 }
 
 void Spelbord::initializeBoard()
@@ -59,7 +64,7 @@ bool Spelbord::move(Pion* pion, int fromX, int fromY, int toX, int toY)
 {
 	bool valid = false;
 	valid = canMove(pion, fromX, fromY, toX, toY);
-	valid &= spel->isValidMove(*pion, fromX, fromY, toX, toY);
+	valid &= spel->isValidMove(pion, fromX, fromY, toX, toY);
 	if (valid)
 	{
 		if (board[toY][toX] == NULL)
@@ -70,6 +75,7 @@ bool Spelbord::move(Pion* pion, int fromX, int fromY, int toX, int toY)
 			board[toY][toX] = pion;
 
 		}
+		// TODO: Vragen of dit wel kan
 		history = new Zet[historySize + 1];
 		history[historySize] = Zet(pion, fromX, fromY, toX, toY);
 		board[fromY][fromX] = NULL;
@@ -87,8 +93,8 @@ bool Spelbord::canMove(Pion* pion, int fromX, int fromY, int toX, int toY)
 	{
 		case Pion::Type::SOLDIER:
 			bool first = false, valid = false;
-			first = (pion->getColor() == Pion::Color::WHITE && fromY == 6) ||
-					(pion->getColor() == Pion::Color::BLACK && fromY == 1);	
+			first = (pion->getColor() == Pion::Color::WHITE && fromY == 1) ||
+					(pion->getColor() == Pion::Color::BLACK && fromY == 6);	
 
 			valid = Zet::canSoldMove(fromX, fromY, toX, toY, first, pion->getColor());
 			valid |= Zet::canSoldAttack(fromX, fromY, toX, toY, pion->getColor());

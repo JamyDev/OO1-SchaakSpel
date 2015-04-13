@@ -1,3 +1,8 @@
+/*
+* Pion.cpp
+* Authors: Jamy Timmermans, Jeroen Ceyssens
+*/
+
 #include "Pion.h"
 
 Pion::Pion()

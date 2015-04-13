@@ -1,3 +1,8 @@
+/*
+* main.cpp
+* Authors: Jamy Timmermans
+*/
+
 #include <iostream>
 #include <conio.h>
 #include "spel.h"
