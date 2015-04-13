@@ -83,6 +83,7 @@
     <ClInclude Include="Zet.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Pion.cpp" />
     <ClCompile Include="Spel.cpp" />
     <ClCompile Include="Spelbord.cpp" />

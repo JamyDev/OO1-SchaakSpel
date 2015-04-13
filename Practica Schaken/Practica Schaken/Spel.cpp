@@ -3,5 +3,9 @@
 Spel::Spel()
 {
 	spelbord = new Spelbord;
-	setupVeld();
+	activePlayer = WHITE;
+}
+Spel::~Spel()
+{
+	delete spelbord;
 }
