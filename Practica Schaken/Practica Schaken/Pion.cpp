@@ -2,7 +2,7 @@
 
 Pion::Pion()
 {
-	color = BLACK;
+	color = WHITE;
 	type = SOLDIER;
 }
 Pion::Pion(enum Color colornum, enum Type typenum)
