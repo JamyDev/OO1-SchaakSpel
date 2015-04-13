@@ -59,10 +59,14 @@ bool Spelbord::canMove(Pion pion, int fromX, int fromY, int toX, int toY)
 void Spelbord::printBoard()
 {
 	std::cout << "\n";
-	std::cout << "\n---------------------------------\n";
+	std::cout << "\n-------------------------------------\n" << "|   |";
+	for (int i = 0; i < VELDGROOTTE; ++i)
+		std::cout << " " << (char)('A' + i) << " |";
+	
+	std::cout << "\n=====================================\n";
 	for (int i = VELDGROOTTE - 1; i >= 0; --i)
 	{
-		std::cout << "|";
+		std::cout << "| " << i << " |";
 		for (int j = 0; j < VELDGROOTTE; ++j)
 		{
 			char c = ' ';
@@ -72,7 +76,7 @@ void Spelbord::printBoard()
 
 			std::cout << " " << c << " |";
 		}
-		std::cout << "\n---------------------------------\n";
+		std::cout << "\n-------------------------------------\n";
 	}
 
 	std::cout << "\n";
