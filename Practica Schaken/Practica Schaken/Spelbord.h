@@ -10,14 +10,19 @@ class Spel;
 class Spelbord 
 {
 	public:
-		Spelbord();
+		Spelbord(Spel* spel1);
 		~Spelbord();
 		void initializeBoard();
 		bool canMove(Pion* pion, int fromX, int fromY, int toX, int toY);
+		bool move(Pion* pion, int fromX, int fromY, int toX, int toY);
 		void printBoard();
 		Pion* board[VELDGROOTTE][VELDGROOTTE];
 	private:
+		Spel* spel;
 		Zet* history;
-		Pion defeated[];
+		Pion* defeated[2][16];
+		int historySize;
+		void initializeDefeated();
+		void addToDefeated(Pion* pion, enum Pion::Color color);
 };
 #endif

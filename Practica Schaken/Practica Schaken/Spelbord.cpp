@@ -1,9 +1,13 @@
 #include <iostream>
 #include "Spelbord.h"
+#include "Spel.h"
 
-Spelbord::Spelbord()
+Spelbord::Spelbord(Spel* spel1)
 {
+	spel = spel1;
 	initializeBoard();
+	initializeDefeated();
+	historySize = 0;
 }
 
 Spelbord::~Spelbord()
@@ -51,6 +55,32 @@ void Spelbord::initializeBoard()
 	board[0][3] = new Pion(Pion::Color::BLACK, Pion::Type::QUEEN);
 }
 
+bool Spelbord::move(Pion* pion, int fromX, int fromY, int toX, int toY)
+{
+	bool valid = false;
+	valid = canMove(pion, fromX, fromY, toX, toY);
+	valid &= spel->isValidMove(*pion, fromX, fromY, toX, toY);
+	if (valid)
+	{
+		if (board[toX][toY] == NULL)
+			board[toX][toY] = pion;
+		else if (board[toX][toY]->getColor() != pion->getColor())
+		{
+			addToDefeated(board[toX][toY], board[toX][toY]->getColor());
+			board[toX][toY] = pion;
+
+		}
+		history = new Zet[historySize + 1];
+		history[historySize] = Zet(pion, fromX, fromY, toX, toY);
+		board[fromX][fromY] = NULL;
+		historySize++;
+		return true;
+	}
+	else
+		return false;
+	
+}
+
 bool Spelbord::canMove(Pion* pion, int fromX, int fromY, int toX, int toY)
 {
 	switch (pion->getType())
@@ -93,4 +123,27 @@ void Spelbord::printBoard()
 	}
 
 	std::cout << "\n";
+}
+
+void Spelbord::initializeDefeated()
+{
+	for (int i = 0; i < 2; ++i)
+	{
+		for (int j = 0; j < VELDGROOTTE*2; ++j)
+		{
+			defeated[i][j] = NULL;
+		}
+	}
+}
+void Spelbord::addToDefeated(Pion* pion, enum Pion::Color color)
+{
+	for (int i = VELDGROOTTE * 2 - 1; i >= 0; --i)
+	{
+		if (defeated[color][i] != NULL && i != VELDGROOTTE * 2 - 1)
+			return;
+		else if (defeated[color][i] != NULL)
+			defeated[color][i + 1] = defeated[color][i];
+	}
+	defeated[color][0] = pion;
+
 }

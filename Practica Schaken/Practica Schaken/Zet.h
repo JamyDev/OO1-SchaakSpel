@@ -1,7 +1,8 @@
 #ifndef ZET_H
 #define ZET_H
+#include "Pion.h"
+
 class Spelbord;
-class Pion;
 class Zet
 {
 	public:
