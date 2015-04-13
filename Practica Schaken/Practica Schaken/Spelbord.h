@@ -13,7 +13,7 @@ class Spelbord
 		Spelbord();
 		~Spelbord();
 		void initializeBoard();
-		bool canMove(Pion pion, int fromX, int fromY, int toX, int toY);
+		bool canMove(Pion* pion, int fromX, int fromY, int toX, int toY);
 		void printBoard();
 		Pion* board[VELDGROOTTE][VELDGROOTTE];
 	private:
