@@ -1,10 +1,10 @@
 /*
 * Gameboard.h
-* Authors: Jamy Timmermans
+* Authors: Jamy Timmermans, Jeroen Ceyssens
 */
 
-#ifndef SPELBORD_H
-#define SPELBORD_H
+#ifndef GAMEBOARD_H
+#define GAMEBOARD_H
 #include "Piece.h"
 #include "Move.h"
 

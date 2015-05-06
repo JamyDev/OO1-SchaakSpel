@@ -87,13 +87,13 @@ bool Game::isValidMove(Piece* piece, int fromX, int fromY, int toX, int toY)
 	{
 		switch (piece->getType())
 		{
-		case Piece::SOLDIER:
+		case Piece::PAWN:
 			for (j = fromY; j >= toY; j--)
 				if (gameboard->board[j][fromX] != NULL)
 					isValid = false;
 			return isValid;
 
-		case Piece::HORSE:
+		case Piece::KNIGHT:
 			if (gameboard->board[toY][toX]->getColor() == WHITE)
 				isValid = false;
 			return isValid;
@@ -102,7 +102,7 @@ bool Game::isValidMove(Piece* piece, int fromX, int fromY, int toX, int toY)
 	} else {
 		switch (piece->getType())
 		{
-		case Piece::SOLDIER:
+		case Piece::PAWN:
 			for (j = fromY; j < toY; j++)
 				if (gameboard->board[j][fromX] != NULL)
 					isValid = false;

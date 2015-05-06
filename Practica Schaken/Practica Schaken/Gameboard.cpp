@@ -1,26 +1,26 @@
 /*
- * Spelbord.cpp
+ * Gameboard.cpp
  * Authors: Jamy Timmermans, Jeroen Ceyssens
  */
 
 #include <iostream>
-#include "Spelbord.h"
-#include "Spel.h"
+#include "Gameboard.h"
+#include "Game.h"
 
-Spelbord::Spelbord(Spel* spel1)
+Gameboard::Gameboard(Game* spel1)
 {
-	spel = spel1;
+	game = spel1;
 	initializeBoard();
 	initializeDefeated();
 	historySize = 0;
 }
 
-Spelbord::~Spelbord()
+Gameboard::~Gameboard()
 {
 	// TODO: delete all Pionnen en ander geheugen
 }
 
-void Spelbord::initializeBoard()
+void Gameboard::initializeBoard()
 {
 	for (int i = 0; i < VELDGROOTTE; ++i)
 	{
@@ -32,52 +32,52 @@ void Spelbord::initializeBoard()
     // Put Soldiers
     for (int i = 0; i < VELDGROOTTE; ++i)
     {
-        board[6][i] = new Pion(Pion::Color::BLACK, Pion::Type::SOLDIER);
-        board[1][i] = new Pion(Pion::Color::WHITE, Pion::Type::SOLDIER);
+        board[6][i] = new Piece(Piece::Color::BLACK, Piece::Type::PAWN);
+        board[1][i] = new Piece(Piece::Color::WHITE, Piece::Type::PAWN);
     }
     // Put Towers
-    board[7][0] = new Pion(Pion::Color::BLACK, Pion::Type::CASTLE);
-    board[7][7] = new Pion(Pion::Color::BLACK, Pion::Type::CASTLE);
-    board[0][0] = new Pion(Pion::Color::WHITE, Pion::Type::CASTLE);
-    board[0][7] = new Pion(Pion::Color::WHITE, Pion::Type::CASTLE);
+    board[7][0] = new Piece(Piece::Color::BLACK, Piece::Type::ROOK);
+    board[7][7] = new Piece(Piece::Color::BLACK, Piece::Type::ROOK);
+    board[0][0] = new Piece(Piece::Color::WHITE, Piece::Type::ROOK);
+    board[0][7] = new Piece(Piece::Color::WHITE, Piece::Type::ROOK);
 
     // Put Horses
-    board[7][1] = new Pion(Pion::Color::BLACK, Pion::Type::HORSE);
-    board[7][6] = new Pion(Pion::Color::BLACK, Pion::Type::HORSE);
-    board[0][1] = new Pion(Pion::Color::WHITE, Pion::Type::HORSE);
-    board[0][6] = new Pion(Pion::Color::WHITE, Pion::Type::HORSE);
+    board[7][1] = new Piece(Piece::Color::BLACK, Piece::Type::KNIGHT);
+    board[7][6] = new Piece(Piece::Color::BLACK, Piece::Type::KNIGHT);
+    board[0][1] = new Piece(Piece::Color::WHITE, Piece::Type::KNIGHT);
+    board[0][6] = new Piece(Piece::Color::WHITE, Piece::Type::KNIGHT);
     
     // Put Bischops
-    board[7][2] = new Pion(Pion::Color::BLACK, Pion::Type::BISCHOP);
-    board[7][5] = new Pion(Pion::Color::BLACK, Pion::Type::BISCHOP);
-    board[0][2] = new Pion(Pion::Color::WHITE, Pion::Type::BISCHOP);
-    board[0][5] = new Pion(Pion::Color::WHITE, Pion::Type::BISCHOP);
+    board[7][2] = new Piece(Piece::Color::BLACK, Piece::Type::BISHOP);
+    board[7][5] = new Piece(Piece::Color::BLACK, Piece::Type::BISHOP);
+    board[0][2] = new Piece(Piece::Color::WHITE, Piece::Type::BISHOP);
+    board[0][5] = new Piece(Piece::Color::WHITE, Piece::Type::BISHOP);
 
     // King and Queen
-    board[7][3] = new Pion(Pion::Color::BLACK, Pion::Type::KING);
-    board[0][4] = new Pion(Pion::Color::WHITE, Pion::Type::KING);
-    board[7][4] = new Pion(Pion::Color::BLACK, Pion::Type::QUEEN);
-    board[0][3] = new Pion(Pion::Color::WHITE, Pion::Type::QUEEN);
+    board[7][3] = new Piece(Piece::Color::BLACK, Piece::Type::KING);
+    board[0][4] = new Piece(Piece::Color::WHITE, Piece::Type::KING);
+    board[7][4] = new Piece(Piece::Color::BLACK, Piece::Type::QUEEN);
+    board[0][3] = new Piece(Piece::Color::WHITE, Piece::Type::QUEEN);
 }
 
-bool Spelbord::move(Pion* pion, int fromX, int fromY, int toX, int toY)
+bool Gameboard::move(Piece* piece, int fromX, int fromY, int toX, int toY)
 {
 	bool valid = false;
-	valid = canMove(pion, fromX, fromY, toX, toY);
-	valid &= spel->isValidMove(pion, fromX, fromY, toX, toY);
+	valid = canMove(piece, fromX, fromY, toX, toY);
+	valid &= game->isValidMove(piece, fromX, fromY, toX, toY);
 	if (valid)
 	{
 		if (board[toY][toX] == NULL)
-			board[toY][toX] = pion;
-		else if (board[toY][toX]->getColor() != pion->getColor())
+			board[toY][toX] = piece;
+		else if (board[toY][toX]->getColor() != piece->getColor())
 		{
 			addToDefeated(board[toY][toX], board[toY][toX]->getColor());
-			board[toY][toX] = pion;
+			board[toY][toX] = piece;
 
 		}
 		// TODO: Vragen of dit wel kan
-		history = new Zet[historySize + 1];
-		history[historySize] = Zet(pion, fromX, fromY, toX, toY);
+		history = new Move[historySize + 1];
+		history[historySize] = Move(piece, fromX, fromY, toX, toY);
 		board[fromY][fromX] = NULL;
 		historySize++;
 		return true;
@@ -87,17 +87,17 @@ bool Spelbord::move(Pion* pion, int fromX, int fromY, int toX, int toY)
 	
 }
 
-bool Spelbord::canMove(Pion* pion, int fromX, int fromY, int toX, int toY)
+bool Gameboard::canMove(Piece* piece, int fromX, int fromY, int toX, int toY)
 {
-	switch (pion->getType())
+	switch (piece->getType())
 	{
-		case Pion::Type::SOLDIER:
+		case Piece::Type::PAWN:
 			bool first = false, valid = false;
-			first = (pion->getColor() == Pion::Color::WHITE && fromY == 1) ||
-					(pion->getColor() == Pion::Color::BLACK && fromY == 6);	
+			first = (piece->getColor() == Piece::Color::WHITE && fromY == 1) ||
+					(piece->getColor() == Piece::Color::BLACK && fromY == 6);	
 
-			valid = Zet::canSoldMove(fromX, fromY, toX, toY, first, pion->getColor());
-			valid |= Zet::canSoldAttack(fromX, fromY, toX, toY, pion->getColor());
+			valid = Move::canPawnMove(fromX, fromY, toX, toY, first, piece->getColor());
+			valid |= Move::canPawnAttack(fromX, fromY, toX, toY, piece->getColor());
 
 			return valid;
 		// Rest cases komen hier
@@ -105,7 +105,7 @@ bool Spelbord::canMove(Pion* pion, int fromX, int fromY, int toX, int toY)
 	return false;
 }
 
-void Spelbord::printBoard()
+void Gameboard::printBoard()
 {
 	std::cout << "\n";
 	std::cout << "\n-------------------------------------\n" << "|   |";
@@ -119,7 +119,7 @@ void Spelbord::printBoard()
 		for (int j = 0; j < VELDGROOTTE; ++j)
 		{
 			char c = ' ';
-			Pion* p = board[i][j];
+			Piece* p = board[i][j];
 			if (p != NULL)
 				c = p->getSymbol();
 
@@ -135,7 +135,7 @@ void Spelbord::printBoard()
 	std::cout << "\n";
 }
 
-void Spelbord::initializeDefeated()
+void Gameboard::initializeDefeated()
 {
 	for (int i = 0; i < 2; ++i)
 	{
@@ -145,7 +145,7 @@ void Spelbord::initializeDefeated()
 		}
 	}
 }
-void Spelbord::addToDefeated(Pion* pion, enum Pion::Color color)
+void Gameboard::addToDefeated(Piece* piece, enum Piece::Color color)
 {
 	for (int i = VELDGROOTTE * 2 - 1; i >= 0; --i)
 	{
@@ -154,6 +154,6 @@ void Spelbord::addToDefeated(Pion* pion, enum Pion::Color color)
 		else if (defeated[color][i] != NULL)
 			defeated[color][i + 1] = defeated[color][i];
 	}
-	defeated[color][0] = pion;
+	defeated[color][0] = piece;
 
 }

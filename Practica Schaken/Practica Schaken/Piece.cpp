@@ -5,38 +5,27 @@
 
 #include "Piece.h"
 
-Piece::Piece()
-{
-	color = WHITE;
-	type = SOLDIER;
-}
-Piece::Piece(enum Color colornum, enum Type typenum)
-{
-	color = colornum;
-	type = typenum;
-}
-
-Piece::Color Piece::getColor()
+Piece::Color Piece::getColor() const
 {
 	return color;
 }
 
-Piece::Type Piece::getType()
+Piece::Type Piece::getType() const
 {
 	return type;
 }
 
-char Piece::getSymbol()
+char Piece::getSymbol() const
 {
 	switch (type)
 	{
-		case SOLDIER:
+		case PAWN:
 			return '^';
-		case CASTLE:
+		case ROOK:
 			return '#';
-		case HORSE:
+		case KNIGHT:
 			return '%';
-		case BISCHOP:
+		case BISHOP:
 			return '&';
 		case KING:
 			return '+';
@@ -45,4 +34,20 @@ char Piece::getSymbol()
 		default:
 			return ' ';
 	}
+}
+
+int Piece::getX() const
+{
+	return x;
+}
+
+int Piece::getY() const
+{
+	return y;
+}
+
+void Piece::setNewPos(int newX, int newY)
+{
+	x = newX;
+	y = newY;
 }

@@ -3,8 +3,8 @@
 * Authors: Jamy Timmermans, Jeroen Ceyssens
 */
 
-#ifndef SPEL_H
-#define SPEL_H
+#ifndef GAME_H
+#define GAME_H
 
 #include "Gameboard.h"
 #include "Piece.h"

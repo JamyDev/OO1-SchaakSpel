@@ -77,17 +77,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Pion.h" />
-    <ClInclude Include="Spel.h" />
-    <ClInclude Include="Spelbord.h" />
-    <ClInclude Include="Zet.h" />
+    <ClInclude Include="Bishop.h" />
+    <ClInclude Include="King.h" />
+    <ClInclude Include="Knight.h" />
+    <ClInclude Include="Pawn.h" />
+    <ClInclude Include="Piece.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Gameboard.h" />
+    <ClInclude Include="Move.h" />
+    <ClInclude Include="Queen.h" />
+    <ClInclude Include="Rook.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bishop.cpp" />
+    <ClCompile Include="King.cpp" />
+    <ClCompile Include="Knight.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Pion.cpp" />
-    <ClCompile Include="Spel.cpp" />
-    <ClCompile Include="Spelbord.cpp" />
-    <ClCompile Include="Zet.cpp" />
+    <ClCompile Include="Pawn.cpp" />
+    <ClCompile Include="Piece.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Gameboard.cpp" />
+    <ClCompile Include="Move.cpp" />
+    <ClCompile Include="Queen.cpp" />
+    <ClCompile Include="Rook.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

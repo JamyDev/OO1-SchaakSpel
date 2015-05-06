@@ -41,7 +41,7 @@ bool Move::canHorseMove(int fromX, int fromY, int toX, int toY)
 		return false;
 }
 
-bool Move::canSoldMove(int fromX, int fromY, int toX, int toY, bool isFirst, enum Piece::Color color)
+bool Move::canPawnMove(int fromX, int fromY, int toX, int toY, bool isFirst, enum Piece::Color color)
 {
 	if (toX < 0 || toY < 0 || toX >= VELDGROOTTE || toY >= VELDGROOTTE)
 		return false;
@@ -67,7 +67,7 @@ bool Move::canSoldMove(int fromX, int fromY, int toX, int toY, bool isFirst, enu
 		return false;
 }
 
-bool Move::canSoldAttack(int fromX, int fromY, int toX, int toY, enum Piece::Color color)
+bool Move::canPawnAttack(int fromX, int fromY, int toX, int toY, enum Piece::Color color)
 {
 	if (toX < 0 || toY < 0 || toX >= VELDGROOTTE || toY >= VELDGROOTTE)
 		return false;
@@ -93,7 +93,7 @@ bool Move::canSoldAttack(int fromX, int fromY, int toX, int toY, enum Piece::Col
 		return false;
 }
 
-bool Move::canCastleMove(int fromX, int fromY, int toX, int toY)
+bool Move::canKnightMove(int fromX, int fromY, int toX, int toY)
 {
 	if (toX < 0 || toY < 0 || toX >= VELDGROOTTE || toY >= VELDGROOTTE)
 		return false;
@@ -141,4 +141,14 @@ bool Move::canKingMove(int fromX, int fromY, int toX, int toY)
 		return true;
 	else
 		return false;
+}
+
+int Move::getToX() const
+{
+	return newX;
+}
+
+int Move::getToY() const
+{
+	return newY;
 }
