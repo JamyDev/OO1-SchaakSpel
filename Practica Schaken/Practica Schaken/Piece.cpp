@@ -1,32 +1,32 @@
 /*
-* Pion.cpp
+* Piece.cpp
 * Authors: Jamy Timmermans, Jeroen Ceyssens
 */
 
-#include "Pion.h"
+#include "Piece.h"
 
-Pion::Pion()
+Piece::Piece()
 {
 	color = WHITE;
 	type = SOLDIER;
 }
-Pion::Pion(enum Color colornum, enum Type typenum)
+Piece::Piece(enum Color colornum, enum Type typenum)
 {
 	color = colornum;
 	type = typenum;
 }
 
-Pion::Color Pion::getColor()
+Piece::Color Piece::getColor()
 {
 	return color;
 }
 
-Pion::Type Pion::getType()
+Piece::Type Piece::getType()
 {
 	return type;
 }
 
-char Pion::getSymbol()
+char Piece::getSymbol()
 {
 	switch (type)
 	{

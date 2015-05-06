@@ -1,31 +1,31 @@
 /*
-* Zet.cpp
+* Move.cpp
 * Authors: Jeroen Ceyssens
 */
 
 #include <stdlib.h>
-#include "Zet.h"
-#include "Spelbord.h"
+#include "Move.h"
+#include "Gameboard.h"
 
-Zet::Zet()
+Move::Move()
 {
-	pion = NULL;
+	piece = NULL;
 	originalX = 0;
 	originalY = 0;
 	newX = 0;
 	newY = 0;
 }
 
-Zet::Zet(Pion* usedPion, int fromX, int fromY, int toX, int toY)
+Move::Move(Piece* usedPion, int fromX, int fromY, int toX, int toY)
 {
-	pion = usedPion;
+	piece = usedPion;
 	originalX = fromX;
 	originalY = fromY;
 	newX = toX;
 	newY = toY;
 }
 
-bool Zet::canHorseMove(int fromX, int fromY, int toX, int toY)
+bool Move::canHorseMove(int fromX, int fromY, int toX, int toY)
 {
 	if (toX < 0 || toY < 0 || toX >= VELDGROOTTE || toY >= VELDGROOTTE)
 		return false;
@@ -41,11 +41,11 @@ bool Zet::canHorseMove(int fromX, int fromY, int toX, int toY)
 		return false;
 }
 
-bool Zet::canSoldMove(int fromX, int fromY, int toX, int toY, bool isFirst, enum Pion::Color color)
+bool Move::canSoldMove(int fromX, int fromY, int toX, int toY, bool isFirst, enum Piece::Color color)
 {
 	if (toX < 0 || toY < 0 || toX >= VELDGROOTTE || toY >= VELDGROOTTE)
 		return false;
-	if (color == Pion::BLACK)
+	if (color == Piece::BLACK)
 	{
 		if (fromX == toX && fromY - 1 == toY)
 			return true;
@@ -54,7 +54,7 @@ bool Zet::canSoldMove(int fromX, int fromY, int toX, int toY, bool isFirst, enum
 		else
 			return false;
 	}
-	else if (color == Pion::WHITE)
+	else if (color == Piece::WHITE)
 	{
 		if (fromX == toX && fromY + 1 == toY)
 			return true;
@@ -67,11 +67,11 @@ bool Zet::canSoldMove(int fromX, int fromY, int toX, int toY, bool isFirst, enum
 		return false;
 }
 
-bool Zet::canSoldAttack(int fromX, int fromY, int toX, int toY, enum Pion::Color color)
+bool Move::canSoldAttack(int fromX, int fromY, int toX, int toY, enum Piece::Color color)
 {
 	if (toX < 0 || toY < 0 || toX >= VELDGROOTTE || toY >= VELDGROOTTE)
 		return false;
-	if (color == Pion::BLACK)
+	if (color == Piece::BLACK)
 	{
 		if (fromX - 1 == toX && fromY - 1 == toY)
 			return true;
@@ -80,7 +80,7 @@ bool Zet::canSoldAttack(int fromX, int fromY, int toX, int toY, enum Pion::Color
 		else
 			return false;
 	}
-	else if (color == Pion::WHITE)
+	else if (color == Piece::WHITE)
 	{
 		if (fromX - 1 == toX && fromY + 1 == toY)
 			return true;
@@ -93,7 +93,7 @@ bool Zet::canSoldAttack(int fromX, int fromY, int toX, int toY, enum Pion::Color
 		return false;
 }
 
-bool Zet::canCastleMove(int fromX, int fromY, int toX, int toY)
+bool Move::canCastleMove(int fromX, int fromY, int toX, int toY)
 {
 	if (toX < 0 || toY < 0 || toX >= VELDGROOTTE || toY >= VELDGROOTTE)
 		return false;
@@ -105,7 +105,7 @@ bool Zet::canCastleMove(int fromX, int fromY, int toX, int toY)
 		return false;
 }
 
-bool Zet::canBissMove(int fromX, int fromY, int toX, int toY)
+bool Move::canBissMove(int fromX, int fromY, int toX, int toY)
 {
 	if (toX < 0 || toY < 0 || toX >= VELDGROOTTE || toY >= VELDGROOTTE)
 		return false;
@@ -117,7 +117,7 @@ bool Zet::canBissMove(int fromX, int fromY, int toX, int toY)
 		return false;
 }
 
-bool Zet::canQueenMove(int fromX, int fromY, int toX, int toY)
+bool Move::canQueenMove(int fromX, int fromY, int toX, int toY)
 {
 	if (toX < 0 || toY < 0 || toX >= VELDGROOTTE || toY >= VELDGROOTTE)
 		return false;
@@ -131,7 +131,7 @@ bool Zet::canQueenMove(int fromX, int fromY, int toX, int toY)
 		return false;
 }
 
-bool Zet::canKingMove(int fromX, int fromY, int toX, int toY)
+bool Move::canKingMove(int fromX, int fromY, int toX, int toY)
 {
 	if (toX < 0 || toY < 0 || toX >= VELDGROOTTE || toY >= VELDGROOTTE)
 		return false;
