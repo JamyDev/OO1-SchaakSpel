@@ -20,6 +20,14 @@ Gameboard::~Gameboard()
 	// TODO: delete all Pionnen en ander geheugen
 }
 
+Piece* Gameboard::getPieceAt(int x, int y) 
+{
+	if (x < Gameboard::VELDGROOTTE && y < Gameboard::VELDGROOTTE)
+	{
+		return board[y][x];
+	}
+}
+
 void Gameboard::initializeBoard()
 {
 	for (int i = 0; i < VELDGROOTTE; ++i)
@@ -32,7 +40,7 @@ void Gameboard::initializeBoard()
     // Put Soldiers
     for (int i = 0; i < VELDGROOTTE; ++i)
     {
-        board[6][i] = new Piece(Piece::Color::BLACK, Piece::Type::PAWN);
+        board[6][i] = new Pawn(Piece::Color::BLACK);
         board[1][i] = new Piece(Piece::Color::WHITE, Piece::Type::PAWN);
     }
     // Put Towers
@@ -60,11 +68,10 @@ void Gameboard::initializeBoard()
     board[0][3] = new Piece(Piece::Color::WHITE, Piece::Type::QUEEN);
 }
 
-bool Gameboard::move(Piece* piece, int fromX, int fromY, int toX, int toY)
+bool Gameboard::move(Piece* piece, Move& move)
 {
 	bool valid = false;
-	valid = canMove(piece, fromX, fromY, toX, toY);
-	valid &= game->isValidMove(piece, fromX, fromY, toX, toY);
+	valid = piece->isValidMove(move, *game);
 	if (valid)
 	{
 		if (board[toY][toX] == NULL)
@@ -77,7 +84,7 @@ bool Gameboard::move(Piece* piece, int fromX, int fromY, int toX, int toY)
 		}
 		// TODO: Vragen of dit wel kan
 		history = new Move[historySize + 1];
-		history[historySize] = Move(piece, fromX, fromY, toX, toY);
+		history[historySize] = move;
 		board[fromY][fromX] = NULL;
 		historySize++;
 		return true;
@@ -87,23 +94,6 @@ bool Gameboard::move(Piece* piece, int fromX, int fromY, int toX, int toY)
 	
 }
 
-bool Gameboard::canMove(Piece* piece, int fromX, int fromY, int toX, int toY)
-{
-	switch (piece->getType())
-	{
-		case Piece::Type::PAWN:
-			bool first = false, valid = false;
-			first = (piece->getColor() == Piece::Color::WHITE && fromY == 1) ||
-					(piece->getColor() == Piece::Color::BLACK && fromY == 6);	
-
-			valid = Move::canPawnMove(fromX, fromY, toX, toY, first, piece->getColor());
-			valid |= Move::canPawnAttack(fromX, fromY, toX, toY, piece->getColor());
-
-			return valid;
-		// Rest cases komen hier
-	}
-	return false;
-}
 
 void Gameboard::printBoard()
 {

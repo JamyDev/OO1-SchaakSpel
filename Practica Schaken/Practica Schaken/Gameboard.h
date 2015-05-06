@@ -8,8 +8,6 @@
 #include "Piece.h"
 #include "Move.h"
 
-const int VELDGROOTTE = 8;
-
 class Game;
 
 class Gameboard 
@@ -17,14 +15,15 @@ class Gameboard
 	public:
 		Gameboard(Game* game1);
 		~Gameboard();
+		const static int VELDGROOTTE = 8;
 		void initializeBoard();
-		bool canMove(Piece* piece, int fromX, int fromY, int toX, int toY);
-		bool move(Piece* piece, int fromX, int fromY, int toX, int toY);
+		bool move(Piece* piece, Move& move);
 		void printBoard();
-		Piece* board[VELDGROOTTE][VELDGROOTTE];
+		Piece* getPieceAt(int x, int y);
 	private:
 		Game* game;
 		Move* history;
+		Piece* board[VELDGROOTTE][VELDGROOTTE];
 		Piece* defeated[2][16];
 		int historySize;
 		void initializeDefeated();
