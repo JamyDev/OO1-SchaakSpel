@@ -4,6 +4,7 @@
 */
 
 #include "Piece.h"
+#include <stdlib.h>
 
 Piece::Color Piece::getColor() const
 {
@@ -50,4 +51,27 @@ void Piece::setNewPos(int newX, int newY)
 {
 	x = newX;
 	y = newY;
+}
+bool Piece::checkIfNoInterrupt(const Move& move, Gameboard* gameboard)
+{
+	int differenceX = move.getToX() - getX();
+	int differenceY = move.getToY() - getY();
+	int i, j;
+	if (differenceX < 0 && differenceY < 0)
+		for (i = getX() - 1, j = getY() - 1; i > move.getToX() && j > move.getToY(); --i, --j)
+			if (gameboard->isPieceAt(i, j))
+				return false;
+	else if (differenceX > 0 && differenceY < 0)
+		for (i = getX() + 1, j = getY() - 1; i < move.getToX() && j > move.getToY(); ++i, --j)
+			if (gameboard->isPieceAt(i, j) != NULL)
+				return false;
+	else if (differenceX < 0 && differenceY > 0)
+		for (i = getX() - 1, j = getY() + 1; i > move.getToX() && j < move.getToY(); --i, ++j)
+			if (gameboard->isPieceAt(i, j) != NULL)
+				return false;
+	else if (differenceX > 0 && differenceY > 0)
+		for (i = getX() + 1, j = getY() + 1; i < move.getToX() && j < move.getToY(); ++i, ++j)
+			if (gameboard->isPieceAt(i, j) != NULL)
+				return false;
+	return true;
 }

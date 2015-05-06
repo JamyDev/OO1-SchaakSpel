@@ -20,12 +20,16 @@ Gameboard::~Gameboard()
 	// TODO: delete all Pionnen en ander geheugen
 }
 
-Piece* Gameboard::getPieceAt(int x, int y) 
+bool Gameboard::isPieceAt(int x, int y) 
 {
 	if (x < Gameboard::VELDGROOTTE && y < Gameboard::VELDGROOTTE)
 	{
-		return board[y][x];
+		if (board[y][x] == NULL)
+			return false;
+		else
+			return true;
 	}
+	return false;
 }
 
 void Gameboard::initializeBoard()

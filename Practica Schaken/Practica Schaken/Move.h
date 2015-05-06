@@ -22,7 +22,6 @@ class Move
 		static bool canHorseMove(int fromX, int fromY, int toX, int toY);
 		static bool canPawnMove(int fromX, int fromY, int toX, int toY, bool isFirst, enum Piece::Color color);
 		static bool canPawnAttack(int fromX, int fromY, int toX, int toY, enum Piece::Color color);
-		static bool canKnightMove(int fromX, int fromY, int toX, int toY);
 		static bool canBissMove(int fromX, int fromY, int toX, int toY);
 		static bool canQueenMove(int fromX, int fromY, int toX, int toY);
 		static bool canKingMove(int fromX, int fromY, int toX, int toY);

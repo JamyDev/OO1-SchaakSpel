@@ -5,7 +5,7 @@
 class King : public Piece
 {
 	public:
-		bool isValidMove(const Move& move, const Game& game);
+		bool isValidMove(const Move& move, Game& game);
 		King();
 		King(enum Color color);
 

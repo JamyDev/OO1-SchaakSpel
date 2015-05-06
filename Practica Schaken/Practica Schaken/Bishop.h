@@ -5,7 +5,7 @@
 class Bishop : public Piece
 {
 	public:
-		bool isValidMove(const Move& move, const Game& game);
+		bool isValidMove(const Move& move, Game& game);
 		Bishop();
 		Bishop(enum Color colornum);
 

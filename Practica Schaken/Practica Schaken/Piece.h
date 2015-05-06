@@ -5,6 +5,7 @@
 
 #ifndef PIECE_H
 #define PIECE_H 1
+#include "Game.h"
 #include "Gameboard.h"
 class Piece
 {
@@ -13,12 +14,13 @@ class Piece
 		enum Color { WHITE, BLACK};
 		//A piece can be any of the following types, possible moves and rules are based on these types.
 		enum Type { PAWN, KNIGHT, ROOK, BISHOP, QUEEN, KING };
-		//Constructors
+
 		enum Color getColor() const;
 		char getSymbol() const;
 		enum Type getType() const;
 
-		virtual bool isValidMove(const Move& move, const Game& game) = 0;
+		virtual bool isValidMove(const Move& move, Game& gameboard) = 0;
+		bool checkIfNoInterrupt( const Move& move, Gameboard* gameboard);
 		int getX() const;
 		int getY() const;
 		void setNewPos(int newX, int newY);
