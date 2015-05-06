@@ -1,15 +1,15 @@
-#ifndef PION_H
-#define PION_H
-class Pion
+#ifndef PIECE_H
+#define PIECE_H
+class Piece
 {
 	public:
-		//Defines which color the pion has.
+		//Defines which color the Piece has.
 		enum Color { WHITE, BLACK};
-		//A pion can be any of the following types, possible moves and rules are based on these types.
+		//A Piece can be any of the following types, possible moves and rules are based on these types.
 		enum Type { SOLDIER, HORSE, CASTLE, BISCHOP, QUEEN, KING };
 		//Constructors
-		Pion();
-		Pion(enum Color colornum, enum Type typenum);
+		Piece();
+		Piece(enum Color colornum, enum Type typenum);
 		enum Color getColor();
 		char getSymbol();
 		enum Type getType();

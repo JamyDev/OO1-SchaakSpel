@@ -1,26 +1,26 @@
-#ifndef ZET_H
-#define ZET_H
-#include "Pion.h"
+#ifndef MOVE_H
+#define MOVE_H
+#include "Piece.h"
 
-class Spelbord;
-class Zet
+class Gameboard;
+class Move
 {
 	public:
 		//default constructor
-		Zet();
+		Move();
 		//param constructor
-		Zet(Pion* usedPion, int fromX, int fromY, int toX, int toY);
-		//booleans that check which moves the pions can do
+		Move(Piece* usedPiece, int fromX, int fromY, int toX, int toY);
+		//booleans that check which moves the Pieces can do
 		static bool canHorseMove(int fromX, int fromY, int toX, int toY);
-		static bool canSoldMove(int fromX, int fromY, int toX, int toY, bool isFirst, enum Pion::Color color);
-		static bool canSoldAttack(int fromX, int fromY, int toX, int toY, enum Pion::Color color);
+		static bool canSoldMove(int fromX, int fromY, int toX, int toY, bool isFirst, enum Piece::Color color);
+		static bool canSoldAttack(int fromX, int fromY, int toX, int toY, enum Piece::Color color);
 		static bool canCastleMove(int fromX, int fromY, int toX, int toY);
 		static bool canBissMove(int fromX, int fromY, int toX, int toY);
 		static bool canQueenMove(int fromX, int fromY, int toX, int toY);
 		static bool canKingMove(int fromX, int fromY, int toX, int toY);
 
 	private:
-		Pion *pion;
+		Piece *piece;
 		int originalX;
 		int originalY;
 		int newX;

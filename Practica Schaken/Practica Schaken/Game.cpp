@@ -1,39 +1,37 @@
 #include <stdlib.h>
 #include <string.h>
 #include <iostream>
-#include "Spel.h"
+#include "Game.h"
 
-void flush_stdin();
 
-Spel::Spel()
+Game::Game()
 {
-	spelbord = new Spelbord(this);
+	gameboard = new Gameboard(this);
 	activePlayer = WHITE;
 }
-Spel::~Spel()
+Game::~Game()
 {
-	delete spelbord;
+	delete gameboard;
 }
 
 
-void Spel::startSpel()
+void Game::startGame()
 {
 	while (true)
 	{
-		spelbord->printBoard();
+		gameboard->printBoard();
 		std::cout << "[" << ((activePlayer == WHITE) ? "WHITE" : "BLACK") << "] Please enter your move (e.g.: B4 B6 (element on B4 to B6)): ";
 		char fromC, toC;
 		int fromX, fromY, toX, toY;
 		
-		scanf("%c%i %c%i", &fromC, &fromY, &toC, &toY);
-		flush_stdin();
+		scanf("%c%i %c%i", &fromC, &fromX, &toC, &toX);
 		
 		// Indexing on 0 but board has 1
-		fromY--;
-		toY--;
+		fromX--;
+		toX--;
 
-		fromX = (toupper(fromC) - 'A');
-		toX = (toupper(toC) - 'A');
+		fromY = (toupper(fromC) - 'A');
+		toY = (toupper(toC) - 'A');
 		
 		// Check if origin exists
 		if (fromX < 0 || fromX > 7 ||
@@ -42,7 +40,7 @@ void Spel::startSpel()
 			std::cout << "Invalid postion for source.";
 			continue;
 		}
-		Pion* p = spelbord->board[fromY][fromX];
+		Piece* p = gameboard->board[fromY][fromX];
 
 		if (p == NULL)
 		{
@@ -64,7 +62,7 @@ void Spel::startSpel()
 			continue;
 		}
 
-		if (spelbord->move(p, fromX, fromY, toX, toY))
+		if (gameboard->move(p, fromX, fromY, toX, toY))
 		{
 			activePlayer = (activePlayer == WHITE) ? BLACK : WHITE;
 		} else {
@@ -73,22 +71,22 @@ void Spel::startSpel()
 	}
 }
 
-bool Spel::isValidMove(Pion &pion, int fromX, int fromY, int toX, int toY)
+bool Game::isValidMove(Piece &piece, int fromX, int fromY, int toX, int toY)
 {
 	int i, j;
 	bool isValid = true;
 	if (activePlayer == WHITE)
 	{
-		switch (pion.getType())
+		switch (piece.getType())
 		{
-		case Pion::SOLDIER:
+		case Piece::SOLDIER:
 			for (j = fromY; j >= toY; j--)
-				if (spelbord->board[j][fromX] != NULL)
+				if (gameboard->board[j][fromX] != NULL)
 					isValid = false;
 			return isValid;
 
-		case Pion::HORSE:
-			if (spelbord->board[toY][toX]->getColor() == WHITE)
+		case Piece::HORSE:
+			if (gameboard->board[toY][toX]->getColor() == WHITE)
 				isValid = false;
 			return isValid;
 			//de rest komt nog
@@ -96,16 +94,7 @@ bool Spel::isValidMove(Pion &pion, int fromX, int fromY, int toX, int toY)
 	}
 }
 
-Spelbord* Spel::getSpelbord()
+Gameboard* Game::getGameboard()
 {
-	return spelbord;
+	return gameboard;
 }
-
-/* Flush the stdin buffer (scanf leaves \n there)
-   This way fgets on stdin doesn't just skip. */
-void flush_stdin()
-{
-	char c;
-	while ((c = getchar()) != '\n' && c != EOF);
-}
-
