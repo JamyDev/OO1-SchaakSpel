@@ -18,14 +18,6 @@ class Move
 		int getToX() const;
 		int getToY() const;
 
-		//booleans that check which moves the pions can do
-		static bool canHorseMove(int fromX, int fromY, int toX, int toY);
-		static bool canPawnMove(int fromX, int fromY, int toX, int toY, bool isFirst, enum Piece::Color color);
-		static bool canPawnAttack(int fromX, int fromY, int toX, int toY, enum Piece::Color color);
-		static bool canBissMove(int fromX, int fromY, int toX, int toY);
-		static bool canQueenMove(int fromX, int fromY, int toX, int toY);
-		static bool canKingMove(int fromX, int fromY, int toX, int toY);
-
 	private:
 		Piece *piece;
 		int originalX;
