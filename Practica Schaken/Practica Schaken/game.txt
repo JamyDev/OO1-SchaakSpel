@@ -2,9 +2,9 @@
 |WR|WB|WH|WQ|WK|WH|WB|WR|
 |  |WP|WP|WP|WP|WP|WP|WP|
 |  |  |  |  |  |  |  |  |
-|WP|  |  |  |  |  |  |  |
+|  |  |BP|  |  |  |  |  |
 |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |
-|BP|BP|BP|BP|BP|BP|BP|BP|
-|BR|BB|BH|BK|BQ|BH|BB|BR|
+|  |  |  |BB|  |  |  |  |
+|BP|  |  |BP|BP|BP|BP|BP|
+|BR|WQ|BH|BK|BQ|BH|BB|BR|
 |

@@ -28,7 +28,7 @@ class Piece
 		int getX() const;
 		int getY() const;
 		void setNewPos(int newX, int newY);
-
+		Piece* getPromotedPiece(char type);
 	protected:
 		enum Color color;
 		enum Type type;

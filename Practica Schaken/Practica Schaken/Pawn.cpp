@@ -48,24 +48,28 @@ bool Pawn::isValidMove(const Move& move, Game& game)
 	return false;
 }
 
-bool Pawn::isValidAttack(const Move& move, const Game& game) const
+bool Pawn::isValidAttack(const Move& move, Game& game) const
 {
 	if (move.getToX() < 0 || move.getToY() < 0 || move.getToX() >= Gameboard::VELDGROOTTE || move.getToY() >= Gameboard::VELDGROOTTE)
 		return false;
 	if (color == Piece::BLACK)
 	{
-		if (getX() - 1 == move.getToX() && getY() - 1 == move.getToY())
+		if (getX() - 1 == move.getToX() && getY() - 1 == move.getToY() && 
+			game.getGameboard()->getPieceAt(move.getToX(), move.getToY())->getColor() == WHITE)
 			return true;
-		else if (getX() + 1 == move.getToX() && getY() - 1 == move.getToY())
+		else if (getX() + 1 == move.getToX() && getY() - 1 == move.getToY() &&
+			game.getGameboard()->getPieceAt(move.getToX(), move.getToY())->getColor() == WHITE)
 			return true;
 		else
 			return false;
 	}
 	else if (color == Piece::WHITE)
 	{
-		if (getX() - 1 == move.getToX() && getY() + 1 == move.getToY())
+		if (getX() - 1 == move.getToX() && getY() + 1 == move.getToY() &&
+			game.getGameboard()->getPieceAt(move.getToX(), move.getToY())->getColor() == BLACK)
 			return true;
-		else if (getX() + 1 == move.getToX() && getY() + 1 == move.getToY())
+		else if (getX() + 1 == move.getToX() && getY() + 1 == move.getToY() &&
+			game.getGameboard()->getPieceAt(move.getToX(), move.getToY())->getColor() == BLACK)
 			return true;
 		else
 			return false;

@@ -54,6 +54,7 @@ void Piece::setNewPos(int newX, int newY)
 	x = newX;
 	y = newY;
 }
+
 bool Piece::checkIfNoInterrupt(const Move& move, Gameboard* gameboard)
 {
 	int differenceX = move.getToX() - getX();
@@ -76,4 +77,34 @@ bool Piece::checkIfNoInterrupt(const Move& move, Gameboard* gameboard)
 			if (gameboard->isPieceAt(i, j) != NULL)
 				return false;
 	return true;
+}
+
+Piece* Piece::getPromotedPiece(char type)
+{
+	Piece* newPiece;
+	if (getType() != PAWN)
+		return NULL;
+	if (type == 'r' || type == 'R')
+	{
+		newPiece = new Rook(getColor());
+		newPiece->setNewPos(getX(), getY());
+	}
+	else if (type == 'b' || type == 'B')
+	{
+		newPiece = new Bishop(getColor());
+		newPiece->setNewPos(getX(), getY());
+	}
+	else if (type == 'q' || type == 'Q')
+	{
+		newPiece = new Queen(getColor());
+		newPiece->setNewPos(getX(), getY());
+	}
+	else if (type == 'k' || type == 'K')
+	{
+		newPiece = new Knight(getColor());
+		newPiece->setNewPos(getX(), getY());
+	}
+	else
+		return NULL;
+	return newPiece;
 }

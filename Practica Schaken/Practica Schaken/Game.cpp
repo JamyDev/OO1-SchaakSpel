@@ -75,6 +75,10 @@ void Game::startGame()
 
 			if (gameboard->move(p, *move))
 			{
+				if (p->getType() == Piece::PAWN && (p->getY() == Gameboard::VELDGROOTTE - 1 || p->getY() == 0))
+				{
+					gameboard->promote(p, ui.askPromotion());
+				}
 				activePlayer = (activePlayer == WHITE) ? BLACK : WHITE;
 			}
 			else {

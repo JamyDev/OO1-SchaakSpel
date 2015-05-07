@@ -19,7 +19,6 @@ Gameboard::Gameboard(Game* spel1)
 	game = spel1;
 	initializeBoard();
 	initializeDefeated();
-	historySize = 0;
 }
 
 Gameboard::~Gameboard()
@@ -156,11 +155,8 @@ bool Gameboard::move(Piece* piece, Move& move)
 
 		}
 		piece->setNewPos(move.getToX(), move.getToY());
-		// TODO: Vragen of dit wel kan
-		history = new Move[historySize + 1];
-		history[historySize] = move;
 		board[move.getFromY()][move.getFromX()] = NULL;
-		historySize++;
+		// TODO: Vragen of dit wel kan
 		return true;
 	}
 	else
@@ -194,5 +190,15 @@ void Gameboard::addToDefeated(Piece& piece, enum Piece::Color color)
 
 void Gameboard::putPiece(Piece* piece, int x, int y) 
 {
+	delete board[y][x];
 	board[y][x] = piece;
+}
+
+bool Gameboard::promote(Piece* piece, char type)
+{
+	Piece* newPiece = piece->getPromotedPiece(type);
+	if (newPiece == NULL)
+		return false;
+	putPiece(newPiece, newPiece->getX(), newPiece->getY());
+	return true;
 }

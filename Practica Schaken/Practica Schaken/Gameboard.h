@@ -22,19 +22,19 @@ class Gameboard
 		Gameboard(Game* game1);
 		~Gameboard();
 		const static int VELDGROOTTE = 8;
-		void initializeBoard();
 		void clearBoard();
-		void resetBoard();
 		bool move(Piece* piece, Move& move);
 		bool isPieceAt(int x, int y);
 		Piece* getPieceAt(int x, int y);
 		void putPiece(Piece* piece, int x, int y);
+		bool promote(Piece* piece, char type);
+		
 	private:
 		Game* game;
-		Move* history;
 		Piece* board[VELDGROOTTE][VELDGROOTTE];
 		Piece* defeated[2][16];
-		int historySize;
+		void resetBoard();
+		void initializeBoard();
 		void initializeDefeated();
 		void addToDefeated(Piece& piece, enum Piece::Color color);
 };
