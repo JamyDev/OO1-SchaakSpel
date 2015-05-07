@@ -2,6 +2,8 @@
 #define PAWN_H 1
 #include "Piece.h"
 
+class Game;
+
 class Pawn: public Piece
 {
 	public:

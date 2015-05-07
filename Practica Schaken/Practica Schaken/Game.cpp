@@ -48,7 +48,7 @@ void Game::startGame()
 			std::cout << "Invalid postion for source.";
 			continue;
 		}
-		Piece* p = gameboard->board[fromY][fromX];
+		Piece* p = gameboard->getPieceAt(fromX, fromY);
 
 		if (p == NULL)
 		{
@@ -70,7 +70,8 @@ void Game::startGame()
 			continue;
 		}
 
-		if (gameboard->move(p, fromX, fromY, toX, toY))
+		Move move(p, fromX, fromY, toX, toY);
+		if (gameboard->move(p, move))
 		{
 			activePlayer = (activePlayer == WHITE) ? BLACK : WHITE;
 		} else {
@@ -79,39 +80,6 @@ void Game::startGame()
 	}
 }
 
-bool Game::isValidMove(Piece* piece, int fromX, int fromY, int toX, int toY)
-{
-	int i, j;
-	bool isValid = true;
-	if (activePlayer == WHITE)
-	{
-		switch (piece->getType())
-		{
-		case Piece::PAWN:
-			for (j = fromY; j >= toY; j--)
-				if (gameboard->board[j][fromX] != NULL)
-					isValid = false;
-			return isValid;
-
-		case Piece::KNIGHT:
-			if (gameboard->board[toY][toX]->getColor() == WHITE)
-				isValid = false;
-			return isValid;
-			//de rest komt nog
-		}
-	} else {
-		switch (piece->getType())
-		{
-		case Piece::PAWN:
-			for (j = fromY; j < toY; j++)
-				if (gameboard->board[j][fromX] != NULL)
-					isValid = false;
-			return isValid;
-			//de rest komt nog
-		}
-	}
-	return false;
-}
 
 Gameboard* Game::getGameboard()
 {

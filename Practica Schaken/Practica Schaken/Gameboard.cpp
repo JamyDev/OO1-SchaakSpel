@@ -12,6 +12,7 @@
 #include "Bishop.h"
 #include "King.h"
 #include "Queen.h"
+#include "Piece.h"
 
 Gameboard::Gameboard(Game* spel1)
 {
@@ -97,7 +98,7 @@ bool Gameboard::move(Piece* piece, Move& move)
 			board[move.getToY()][move.getToX()] = piece;
 		else if (board[move.getToY()][move.getToX()]->getColor() != piece->getColor())
 		{
-			addToDefeated(board[move.getToY()][move.getToX()], board[move.getToY()][move.getToX()]->getColor());
+			addToDefeated(*board[move.getToY()][move.getToX()], board[move.getToY()][move.getToX()]->getColor());
 			board[move.getToY()][move.getToX()] = piece;
 
 		}
@@ -154,7 +155,7 @@ void Gameboard::initializeDefeated()
 		}
 	}
 }
-void Gameboard::addToDefeated(Piece* piece, enum Piece::Color color)
+void Gameboard::addToDefeated(Piece& piece, enum Piece::Color color)
 {
 	for (int i = VELDGROOTTE * 2 - 1; i >= 0; --i)
 	{
@@ -163,6 +164,6 @@ void Gameboard::addToDefeated(Piece* piece, enum Piece::Color color)
 		else if (defeated[color][i] != NULL)
 			defeated[color][i + 1] = defeated[color][i];
 	}
-	defeated[color][0] = piece;
+	defeated[color][0] = &piece;
 
 }

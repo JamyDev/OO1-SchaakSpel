@@ -5,8 +5,13 @@
 
 #ifndef GAMEBOARD_H
 #define GAMEBOARD_H
-#include "Piece.h"
 #include "Move.h"
+#include "Pawn.h"
+#include "Rook.h"
+#include "Knight.h"
+#include "Bishop.h"
+#include "King.h"
+#include "Queen.h"
 
 class Game;
 class Piece;
@@ -29,6 +34,6 @@ class Gameboard
 		Piece* defeated[2][16];
 		int historySize;
 		void initializeDefeated();
-		void addToDefeated(Piece* piece, enum Piece::Color color);
+		void addToDefeated(Piece& piece, enum Piece::Color color);
 };
 #endif

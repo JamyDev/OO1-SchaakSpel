@@ -1,4 +1,6 @@
 #include "Bishop.h"
+#include "Gameboard.h"
+#include "Game.h"
 
 Bishop::Bishop()
 {

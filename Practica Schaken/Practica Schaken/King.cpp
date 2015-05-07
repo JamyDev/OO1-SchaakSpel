@@ -1,4 +1,5 @@
 #include "King.h"
+#include "Gameboard.h"
 
 King::King()
 {

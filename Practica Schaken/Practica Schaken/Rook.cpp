@@ -1,4 +1,6 @@
 #include "Rook.h"
+#include "Gameboard.h"
+#include "Game.h"
 
 Rook::Rook()
 {

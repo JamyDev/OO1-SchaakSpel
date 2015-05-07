@@ -1,4 +1,6 @@
 #include "Queen.h"
+#include "Gameboard.h"
+#include "Game.h"
 
 Queen::Queen()
 {

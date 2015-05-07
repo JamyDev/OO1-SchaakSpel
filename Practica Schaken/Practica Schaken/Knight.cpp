@@ -1,4 +1,6 @@
 #include "Knight.h"
+#include "Gameboard.h"
+#include "Game.h"
 
 Knight::Knight()
 {

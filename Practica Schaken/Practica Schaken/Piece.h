@@ -5,10 +5,9 @@
 
 #ifndef PIECE_H
 #define PIECE_H 1
-#include "Game.h"
-#include "Gameboard.h"
 
-class Move;
+#include "Move.h"
+
 class Gameboard;
 class Game;
 
@@ -16,7 +15,7 @@ class Piece
 {
 	public:
 		//Defines which color the piece has.
-		enum Color { WHITE, BLACK};
+		static enum Color { WHITE, BLACK};
 		//A piece can be any of the following types, possible moves and rules are based on these types.
 		enum Type { PAWN, KNIGHT, ROOK, BISHOP, QUEEN, KING };
 

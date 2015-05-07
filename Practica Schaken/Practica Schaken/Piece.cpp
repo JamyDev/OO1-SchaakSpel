@@ -4,6 +4,8 @@
 */
 
 #include "Piece.h"
+#include "Gameboard.h"
+#include "Game.h"
 #include <stdlib.h>
 
 Piece::Color Piece::getColor() const

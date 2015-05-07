@@ -1,5 +1,6 @@
 #include "Pawn.h"
 #include "Gameboard.h"
+#include "Game.h"
 #include <stdlib.h>
 
 Pawn::Pawn()

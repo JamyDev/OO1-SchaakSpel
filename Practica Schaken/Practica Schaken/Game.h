@@ -5,11 +5,12 @@
 
 #ifndef GAME_H
 #define GAME_H
-
-#include "Gameboard.h"
 #include "Piece.h"
+#include "Gameboard.h"
+#include "Move.h"
 
 class Piece;
+class Gameboard;
 
 enum PlayerColor { WHITE, BLACK };
 
