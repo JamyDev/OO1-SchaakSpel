@@ -15,6 +15,7 @@ class UI {
 		void showActivePlayer(Game& game);
 		void showError(char* error);
 		void showHelp();
+		char askPromotion();
 		Move* getLastMove();
 	private:
 		static const enum UIType {CONSOLE};
@@ -23,6 +24,7 @@ class UI {
 		void printBoardToConsole(Gameboard& board);
 		void printActivePlayerToConsole(Game& game);
 		void printHelpToConsole();
+		char askPromotionConsole();
 		void printErrorToConsole(char* error);
 		static void flush_stdin();
 		static enum Command getCommand(char c);

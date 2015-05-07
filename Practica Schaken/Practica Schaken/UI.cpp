@@ -134,9 +134,24 @@ void UI::printBoardToConsole(Gameboard& board)
 	std::cout << "\n";
 }
 
-void askForMoveConsole()
+char UI::askPromotion()
 {
+	if (uiType == CONSOLE)
+		return askPromotionConsole();
+}
 
+char UI::askPromotionConsole()
+{
+	char prom = 0;
+	while (prom == 0)
+	{
+		std::cout << "What would you like to promote your pawn to? (R = Rook, B = Bishop, H = Knight, Q = Queen): ";
+		prom = toupper(_getche());
+		if (prom != 'R' && prom != 'B' && prom != 'H' && prom != 'Q')
+			prom = 0;
+	}
+
+	return prom;
 }
 
 /* Flush the stdin buffer (scanf leaves \n there)
