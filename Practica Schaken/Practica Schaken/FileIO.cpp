@@ -30,9 +30,9 @@ void FileIO::putToFile(Game& game)
 		file.write("||B||\n", 6);
 	file.put('|');
 
-	for (int i = 0; i < Gameboard::VELDGROOTTE; ++i)
+	for (int j = 0; j < Gameboard::VELDGROOTTE; ++j)
 	{
-		for (int j = 0; j < Gameboard::VELDGROOTTE; ++j)
+		for (int i = 0; i < Gameboard::VELDGROOTTE; ++i)
 		{
 			if (game.getGameboard()->getPieceAt(i, j) == NULL)
 			{
@@ -61,6 +61,7 @@ void FileIO::putToFile(Game& game)
 			file.put('|');
 		}
 		file.put('\n');
+		file.put('|');
 	}
 	file.close();
 }
@@ -94,8 +95,8 @@ void FileIO::getBoardFromFile(Gameboard* gameboard)
 		}
 		if (ch == ' ' && first)
 		{
-			first = false;
 			gameboard->putPiece(NULL, x, y);
+			x++;
 			file.get(ch);
 		}
 		if (ch == 'B' && first)
@@ -108,6 +109,8 @@ void FileIO::getBoardFromFile(Gameboard* gameboard)
 			first = false;
 			color = Piece::WHITE;
 		}
+		if (ch == EOF)
+			break;
 		file.get(ch);
 		if (!first)
 			switch (ch)
