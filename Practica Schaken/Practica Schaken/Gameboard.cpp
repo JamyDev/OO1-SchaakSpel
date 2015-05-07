@@ -6,6 +6,12 @@
 #include <iostream>
 #include "Gameboard.h"
 #include "Game.h"
+#include "Pawn.h"
+#include "Rook.h"
+#include "Knight.h"
+#include "Bishop.h"
+#include "King.h"
+#include "Queen.h"
 
 Gameboard::Gameboard(Game* spel1)
 {
@@ -32,6 +38,15 @@ bool Gameboard::isPieceAt(int x, int y)
 	return false;
 }
 
+
+Piece* Gameboard::getPieceAt(int x, int y)
+{
+	if (x < Gameboard::VELDGROOTTE && y < Gameboard::VELDGROOTTE)
+	{
+		return board[y][x];
+	}
+}
+
 void Gameboard::initializeBoard()
 {
 	for (int i = 0; i < VELDGROOTTE; ++i)
@@ -45,31 +60,31 @@ void Gameboard::initializeBoard()
     for (int i = 0; i < VELDGROOTTE; ++i)
     {
         board[6][i] = new Pawn(Piece::Color::BLACK);
-        board[1][i] = new Piece(Piece::Color::WHITE, Piece::Type::PAWN);
+        board[1][i] = new Pawn(Piece::Color::WHITE);
     }
-    // Put Towers
-    board[7][0] = new Piece(Piece::Color::BLACK, Piece::Type::ROOK);
-    board[7][7] = new Piece(Piece::Color::BLACK, Piece::Type::ROOK);
-    board[0][0] = new Piece(Piece::Color::WHITE, Piece::Type::ROOK);
-    board[0][7] = new Piece(Piece::Color::WHITE, Piece::Type::ROOK);
+    // Put Rooks
+    board[7][0] = new Rook(Piece::Color::BLACK);
+    board[7][7] = new Rook(Piece::Color::BLACK);
+    board[0][0] = new Rook(Piece::Color::WHITE);
+    board[0][7] = new Rook(Piece::Color::WHITE);
 
-    // Put Horses
-    board[7][1] = new Piece(Piece::Color::BLACK, Piece::Type::KNIGHT);
-    board[7][6] = new Piece(Piece::Color::BLACK, Piece::Type::KNIGHT);
-    board[0][1] = new Piece(Piece::Color::WHITE, Piece::Type::KNIGHT);
-    board[0][6] = new Piece(Piece::Color::WHITE, Piece::Type::KNIGHT);
+    // Put Knights
+    board[7][1] = new Knight(Piece::Color::BLACK);
+    board[7][6] = new Knight(Piece::Color::BLACK);
+    board[0][1] = new Knight(Piece::Color::WHITE);
+    board[0][6] = new Knight(Piece::Color::WHITE);
     
     // Put Bischops
-    board[7][2] = new Piece(Piece::Color::BLACK, Piece::Type::BISHOP);
-    board[7][5] = new Piece(Piece::Color::BLACK, Piece::Type::BISHOP);
-    board[0][2] = new Piece(Piece::Color::WHITE, Piece::Type::BISHOP);
-    board[0][5] = new Piece(Piece::Color::WHITE, Piece::Type::BISHOP);
+    board[7][2] = new Bishop(Piece::Color::BLACK);
+    board[7][5] = new Bishop(Piece::Color::BLACK);
+    board[0][2] = new Bishop(Piece::Color::WHITE);
+    board[0][5] = new Bishop(Piece::Color::WHITE);
 
     // King and Queen
-    board[7][3] = new Piece(Piece::Color::BLACK, Piece::Type::KING);
-    board[0][4] = new Piece(Piece::Color::WHITE, Piece::Type::KING);
-    board[7][4] = new Piece(Piece::Color::BLACK, Piece::Type::QUEEN);
-    board[0][3] = new Piece(Piece::Color::WHITE, Piece::Type::QUEEN);
+    board[7][3] = new King(Piece::Color::BLACK);
+    board[0][4] = new King(Piece::Color::WHITE);
+    board[7][4] = new Queen(Piece::Color::BLACK);
+    board[0][3] = new Queen(Piece::Color::WHITE);
 }
 
 bool Gameboard::move(Piece* piece, Move& move)
@@ -78,18 +93,18 @@ bool Gameboard::move(Piece* piece, Move& move)
 	valid = piece->isValidMove(move, *game);
 	if (valid)
 	{
-		if (board[toY][toX] == NULL)
-			board[toY][toX] = piece;
-		else if (board[toY][toX]->getColor() != piece->getColor())
+		if (board[move.getToY()][move.getToX()] == NULL)
+			board[move.getToY()][move.getToX()] = piece;
+		else if (board[move.getToY()][move.getToX()]->getColor() != piece->getColor())
 		{
-			addToDefeated(board[toY][toX], board[toY][toX]->getColor());
-			board[toY][toX] = piece;
+			addToDefeated(board[move.getToY()][move.getToX()], board[move.getToY()][move.getToX()]->getColor());
+			board[move.getToY()][move.getToX()] = piece;
 
 		}
 		// TODO: Vragen of dit wel kan
 		history = new Move[historySize + 1];
 		history[historySize] = move;
-		board[fromY][fromX] = NULL;
+		board[move.getFromY()][move.getFromX()] = NULL;
 		historySize++;
 		return true;
 	}

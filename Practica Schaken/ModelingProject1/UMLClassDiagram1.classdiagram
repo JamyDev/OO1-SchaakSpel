@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="c70c5196-21e1-4389-9534-623e157b4bc3" name="UMLClassDiagram1" linkedPackageId="5bff32b6-3b6e-4341-b262-a20636483e74" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="ef0e5d28-30c1-4782-816f-d527d426e68e">
+      <profileInstance Id="ba5c487d-60fc-4d4e-97c4-2cf9fd63bded" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="c170dbb8-4fba-4e4d-9353-2c78c76fb443">
+      <profileInstance Id="0d6463d2-3ff7-4514-bdf3-f591d2d5983c" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="46ae3241-85d8-4408-94ed-44f3dfbc4431" name="Piece" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="765cb708-f9d8-4b4e-b7fe-76e321efb16d" />
+        <ownedOperationsInternal>
+          <operation Id="41fc9920-8771-4ced-9a45-bd7ae6a1d1af" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="ad2e6091-a1ee-4e42-8b32-0f09d3ee699c" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="02c34398-8e00-444f-8a10-c2fa53994673" name="Pawn" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="825f31a3-9015-4b32-8b75-0a70e26efcac" />
+        <generalsInternal>
+          <generalization Id="ae618f80-d582-4839-882c-3c8dd491d988" isSubstitutable="false">
+            <classMoniker Id="46ae3241-85d8-4408-94ed-44f3dfbc4431" LastKnownName="Piece" />
+            <elementDefinition Id="41867da7-6a46-449f-92ea-64c942f3f8ad" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="fbcde014-2f4f-442c-8f51-1e5adb7893ca" name="Rook" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="9ed7607b-abdb-4755-960b-f5591aec0983" />
+        <generalsInternal>
+          <generalization Id="8309b21d-b109-48e9-b971-140fa64332a0" isSubstitutable="false">
+            <classMoniker Id="46ae3241-85d8-4408-94ed-44f3dfbc4431" LastKnownName="Piece" />
+            <elementDefinition Id="1803506d-3c9f-490a-a6dc-a5e7c5cb71fe" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="cafa41e5-467e-4e25-8f56-236df2571e11" name="Knight" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="0b43c36b-c99c-4d8c-a5a3-ed8c95abcaed" />
+        <generalsInternal>
+          <generalization Id="5b8f98ad-4766-4150-92ed-37bf2fb1d4d7" isSubstitutable="false">
+            <classMoniker Id="46ae3241-85d8-4408-94ed-44f3dfbc4431" LastKnownName="Piece" />
+            <elementDefinition Id="f0c3a4c0-ee39-4a26-bcc9-b882a201dd5f" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="2cc57a94-b831-4a08-a187-e081491cac8e" name="Bishop" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="521f91be-ec9e-498f-b46c-84915b61e59a" />
+        <generalsInternal>
+          <generalization Id="523d29b3-dc8b-4093-95a0-c8a834d88bb6" isSubstitutable="false">
+            <classMoniker Id="46ae3241-85d8-4408-94ed-44f3dfbc4431" LastKnownName="Piece" />
+            <elementDefinition Id="95fe1686-4ef4-4082-8758-b5786a29d4cb" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="f2d93fd6-20ef-40c5-94ab-3ca96c0a3106" name="King" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="ef4355ae-17c8-44fc-b998-83ffae1e1cdd" />
+        <generalsInternal>
+          <generalization Id="ad081f18-b87d-4b01-be66-dfef63d8b8a5" isSubstitutable="false">
+            <classMoniker Id="46ae3241-85d8-4408-94ed-44f3dfbc4431" LastKnownName="Piece" />
+            <elementDefinition Id="aab63822-a8c2-48a6-98b7-7ee5b8ae409c" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="2d398be4-a71a-4e8b-9e57-56916b982299" name="Queen" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="a3de3bdd-83ce-4940-b370-b689c5e90515" />
+        <generalsInternal>
+          <generalization Id="d0077b81-1a38-4082-ba66-c425b655ccc4" isSubstitutable="false">
+            <classMoniker Id="46ae3241-85d8-4408-94ed-44f3dfbc4431" LastKnownName="Piece" />
+            <elementDefinition Id="c1026a79-c082-4da9-ab24-2618d0da54cd" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="efec36df-a555-44c3-a7bc-ba39fa1d3c80" name="GameBoard" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="0b1e089e-6253-49a2-a5af-54c9b3069667" />
+        <targetEnds>
+          <association Id="9e085295-3af8-4ef1-bb49-e4b07ce849b6" isDerived="false" sourceEndRoleName="GameBoard" targetEndRoleName="Piece" isLeaf="false" isAbstract="false">
+            <classMoniker Id="46ae3241-85d8-4408-94ed-44f3dfbc4431" LastKnownName="Piece" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="23b6806a-0521-478b-812c-b9728a1761c7" name="GameBoard" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="23198032-d779-463a-b672-4131a63e80bb" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9e6cbfe5-d8d2-4ba5-a865-16eb28afcd9f" name="Piece" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <lowerValueInternal>
+                    <literalString Id="2c1eea71-57bd-4b86-90af-05583b73dd9a" name="Lower" value="32">
+                      <elementDefinition Id="2afb0be3-c87d-4274-8855-b6d28b879ad1" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="147d2415-4296-4efd-812d-83684fb8f100" name="Upper" value="32">
+                      <elementDefinition Id="285d8318-4373-46da-a7f3-145f001b87e5" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="6b1167f1-72da-4372-b47e-054bca32101d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="3e0a9967-a395-43ba-9637-18a97b0a415e" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="0135434a-6e11-498d-980c-3e84645cf005" name="Piece** board" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="e075fd1d-0f39-4a66-a355-032d65d8e804" />
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="7154d367-56d9-4a49-85a2-a48f6253a783" name="getPieceAt" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="14653f42-ac4a-4e49-91a4-19f03ccdfe6d" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="67f4b735-90a9-4b2a-8d92-a6dcd380fe03" name="int posX" direction="In" isUnique="false">
+                  <elementDefinition Id="f62cb2d4-1e86-4d08-a52f-b9bb6f2a660c" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="20da1b78-a4d0-40f3-af76-d5e9ce191f67" name="int posY" direction="In" isUnique="false">
+                  <elementDefinition Id="51ef2927-603a-4e72-be21-3d30b46c22b9" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="4ec7de7c-0f00-458b-b811-a1ace23bed60" direction="Return" isUnique="false">
+                  <elementDefinition Id="59e9812a-91e4-4304-9828-989faa5afd49" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="50ed8665-ec31-46e1-8dd5-c2318f497c7b" LastKnownName="Piece*" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="2b35319f-c2eb-4195-b612-7fd7d4e95ebc" name="GameBoard" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="fe636bc3-87b7-40e6-871d-05a50a20caa0" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="26b9af81-fa03-475d-8dae-c69b3d5e3006" name="Game" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="52e420ba-6a08-4239-8297-d3dfe8490ac6" />
+        <targetEnds>
+          <association Id="9af0f688-7d94-49dd-b245-e038fb27869c" isDerived="false" sourceEndRoleName="Game" targetEndRoleName="GameBoard" isLeaf="false" isAbstract="false">
+            <classMoniker Id="efec36df-a555-44c3-a7bc-ba39fa1d3c80" LastKnownName="GameBoard" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="935fea47-35ea-4664-bc00-86f278a5feec" name="Game" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c928b909-eae2-4da1-aea2-d8d7037471c1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4c7e74a4-6d30-49f1-bb29-8275f268a970" name="GameBoard" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="b1b808be-4df0-4727-b452-2a8006aff06d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="e1e7321d-9014-4782-acf3-3623bb12af12" />
+          </association>
+          <association Id="cc1b4abd-0b23-4527-b051-18cb50dc0c61" isDerived="false" sourceEndRoleName="Game" targetEndRoleName="Move" isLeaf="false" isAbstract="false">
+            <classMoniker Id="60ce43db-67e1-4da4-a326-cf208852978b" LastKnownName="Move" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="739cc4b8-2e86-4652-9a59-20499b6c6875" name="Game" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="205f40a3-479d-44bc-bb09-138decf64d18" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b74e7816-30d5-4979-8d56-9b1a5bb43ebc" name="Move" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="2b273eb8-7cf1-4c0f-b4be-5dd578174238" name="Lower" value="*">
+                      <elementDefinition Id="143da4e3-9435-4731-8496-a7e5a0133c87" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="e2d994f6-9c98-4692-9f9d-8f7a9de97f94" name="Upper" value="*">
+                      <elementDefinition Id="53415cf6-3734-4418-9960-271343b1e0f4" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="dc62dce4-0d74-4035-8960-ed4f8e7c3329" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c3b4fa38-d2f1-4201-adae-7d46bfec8883" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="60ce43db-67e1-4da4-a326-cf208852978b" name="Move" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="fb5c1eb8-84d3-4b85-a3f0-7e53a84c526f" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="50ed8665-ec31-46e1-8dd5-c2318f497c7b" name="Piece*" isAbstract="false" isLeaf="false" cachedFullName="Piece*">
+        <elementDefinition Id="6c8e7ad7-876c-4863-8e4d-eaa71dbebafc" />
+      </referencedType>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="5bff32b6-3b6e-4341-b262-a20636483e74" name="ModelingProject1">
+    <elementDefinition Id="9945c81b-bfa1-43e6-bca7-9b5b44330ed1" />
+  </package>
+</logicalClassDesignerModel>
