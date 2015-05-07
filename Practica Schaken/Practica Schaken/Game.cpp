@@ -7,6 +7,7 @@
 #include <string.h>
 #include <iostream>
 #include "Game.h"
+#include "Move.h"
 
 void flush_stdin();
 
@@ -26,57 +27,52 @@ void Game::startGame()
 	bool running = true;
 	while (running)
 	{
-		gameboard->printBoard();
-		std::cout << "[" << ((activePlayer == WHITE) ? "WHITE" : "BLACK") << "] Please enter your move (e.g.: B4 B6 (element on B4 to B6)): ";
-		char fromC, toC;
-		int fromX, fromY, toX, toY;
-		
-		scanf("%c%i %c%i", &fromC, &fromY, &toC, &toY);
-		flush_stdin();
-		
-		// Indexing on 0 but board has 1
-		fromY--;
-		toY--;
-
-		fromX = (toupper(fromC) - 'A');
-		toX = (toupper(toC) - 'A');
-		
-		// Check if origin exists
-		if (fromX < 0 || fromX > 7 ||
-			fromY < 0 || fromY > 7)
+		ui.displayBoard(*gameboard);
+		ui.showActivePlayer(*this);
+		enum UI::Command cmd = ui.askCommand(*this);
+		if (cmd == UI::Command::MOVE) 
 		{
-			std::cout << "Invalid postion for source.";
-			continue;
-		}
-		Piece* p = gameboard->getPieceAt(fromX, fromY);
+			Move* move = ui.getLastMove();
+			
+			// Check if origin exists
+			if (move->getFromX() < 0 || move->getFromX() > 7 ||
+				move->getFromY() < 0 || move->getFromY() > 7)
+			{
+				std::cout << "Invalid postion for source.\n";
+				continue;
+			}
 
-		if (p == NULL)
-		{
-			std::cout << fromC << (fromY + 1) << " doesn't exist.";
-			continue;
-		}
+			Piece* p = move->getPiece();
 
-		if (p->getColor() != activePlayer)
-		{
-			std::cout << "Illegal move, it's " << ((activePlayer == WHITE) ? "white's" : "black's") << " turn.";
-			continue;
-		}
+			if (p == NULL)
+			{
+				std::cout << (char) ('A' + move->getFromX()) << (move->getFromY() + 1) << " doesn't exist.";
+				continue;
+			}
 
-		// Check if target exists
-		if (toX < 0 || toX > 7 ||
-			toY < 0 || toY > 7)
-		{
-			std::cout << "Invalid postion for target.";
-			continue;
-		}
+			if (p->getColor() != activePlayer)
+			{
+				std::cout << "Illegal move, it's " << ((activePlayer == WHITE) ? "white's" : "black's") << " turn.";
+				continue;
+			}
 
-		Move move(p, fromX, fromY, toX, toY);
-		if (gameboard->move(p, move))
-		{
-			activePlayer = (activePlayer == WHITE) ? BLACK : WHITE;
-		} else {
-			std::cout << "Illegal move.";
+			// Check if target exists
+			if (move->getToX() < 0 || move->getToX() > 7 ||
+				move->getToY() < 0 || move->getToY() > 7)
+			{
+				std::cout << "Invalid postion for target.";
+				continue;
+			}
+
+			if (gameboard->move(p, *move))
+			{
+				activePlayer = (activePlayer == WHITE) ? BLACK : WHITE;
+			}
+			else {
+				std::cout << "Illegal move.";
+			}
 		}
+			
 	}
 }
 
@@ -84,13 +80,5 @@ void Game::startGame()
 Gameboard* Game::getGameboard()
 {
 	return gameboard;
-}
-
-/* Flush the stdin buffer (scanf leaves \n there)
-   This way fgets on stdin doesn't just skip. */
-void flush_stdin()
-{
-	char c;
-	while ((c = (char) getchar()) != '\n' && c != EOF);
 }
 

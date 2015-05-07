@@ -21,10 +21,11 @@ class Move
 		void setToX(int toX) { newX = toX; }
 		void setToY(int toY) { newY = toY; }
 		//Get and set inline-functions for the originalX and Y
-		int getFromX() const { return newX; }
-		int getFromY() const { return newY; }
+		int getFromX() const { return originalX; }
+		int getFromY() const { return originalY; }
 		void setFromX(int fromX) { originalX = fromX; }
 		void setFromY(int fromY) { originalY = fromY; }
+		Piece* getPiece() { return piece; }
 
 	private:
 		Piece *piece;

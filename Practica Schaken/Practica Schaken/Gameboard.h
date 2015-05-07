@@ -24,7 +24,6 @@ class Gameboard
 		const static int VELDGROOTTE = 8;
 		void initializeBoard();
 		bool move(Piece* piece, Move& move);
-		void printBoard();
 		bool isPieceAt(int x, int y);
 		Piece* getPieceAt(int x, int y);
 	private:

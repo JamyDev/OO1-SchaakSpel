@@ -8,23 +8,23 @@
 #include "Piece.h"
 #include "Gameboard.h"
 #include "Move.h"
+#include "UI.h"
 
 class Piece;
 class Gameboard;
 
-enum PlayerColor { WHITE, BLACK };
-
 class Game 
 {
 	public:
+		static const enum PlayerColor {WHITE, BLACK};
 		Game();
 		~Game();
 		void startGame();
-		bool isValidMove(Piece* piece, int fromX, int fromY, int toX, int toY);
 		Gameboard* getGameboard();
-
+		enum PlayerColor getActivePlayer() { return activePlayer; };
 	private:
 		Gameboard *gameboard;
+		UI ui;
 		enum PlayerColor activePlayer;
 
 };

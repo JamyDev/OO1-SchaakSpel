@@ -61,31 +61,49 @@ void Gameboard::initializeBoard()
     for (int i = 0; i < VELDGROOTTE; ++i)
     {
         board[6][i] = new Pawn(Piece::Color::BLACK);
-        board[1][i] = new Pawn(Piece::Color::WHITE);
+		board[6][i]->setNewPos(i, 6);
+		board[1][i] = new Pawn(Piece::Color::WHITE);
+		board[1][i]->setNewPos(i, 1);
     }
     // Put Rooks
     board[7][0] = new Rook(Piece::Color::BLACK);
+	board[7][0]->setNewPos(0, 7);
     board[7][7] = new Rook(Piece::Color::BLACK);
+	board[7][7]->setNewPos(7, 7);
     board[0][0] = new Rook(Piece::Color::WHITE);
+	board[0][0]->setNewPos(0, 0);
     board[0][7] = new Rook(Piece::Color::WHITE);
+	board[0][7]->setNewPos(7, 0);
 
     // Put Knights
     board[7][1] = new Knight(Piece::Color::BLACK);
+	board[7][1]->setNewPos(1, 7);
     board[7][6] = new Knight(Piece::Color::BLACK);
+	board[7][6]->setNewPos(6, 7);
     board[0][1] = new Knight(Piece::Color::WHITE);
+	board[0][1]->setNewPos(1, 0);
     board[0][6] = new Knight(Piece::Color::WHITE);
+	board[0][6]->setNewPos(6, 0);
     
     // Put Bischops
     board[7][2] = new Bishop(Piece::Color::BLACK);
+	board[7][2]->setNewPos(2, 7);
     board[7][5] = new Bishop(Piece::Color::BLACK);
+	board[7][5]->setNewPos(5, 7);
     board[0][2] = new Bishop(Piece::Color::WHITE);
+	board[0][2]->setNewPos(2, 0);
     board[0][5] = new Bishop(Piece::Color::WHITE);
+	board[0][5]->setNewPos(5, 0);
 
     // King and Queen
     board[7][3] = new King(Piece::Color::BLACK);
+	board[7][3]->setNewPos(3, 7);
     board[0][4] = new King(Piece::Color::WHITE);
+	board[0][4]->setNewPos(4, 0);
     board[7][4] = new Queen(Piece::Color::BLACK);
+	board[7][4]->setNewPos(4, 7);
     board[0][3] = new Queen(Piece::Color::WHITE);
+	board[0][3]->setNewPos(3, 0);
 }
 
 bool Gameboard::move(Piece* piece, Move& move)
@@ -95,13 +113,17 @@ bool Gameboard::move(Piece* piece, Move& move)
 	if (valid)
 	{
 		if (board[move.getToY()][move.getToX()] == NULL)
+		{
 			board[move.getToY()][move.getToX()] = piece;
+			
+		}
 		else if (board[move.getToY()][move.getToX()]->getColor() != piece->getColor())
 		{
 			addToDefeated(*board[move.getToY()][move.getToX()], board[move.getToY()][move.getToX()]->getColor());
 			board[move.getToY()][move.getToX()] = piece;
 
 		}
+		piece->setNewPos(move.getToX(), move.getToY());
 		// TODO: Vragen of dit wel kan
 		history = new Move[historySize + 1];
 		history[historySize] = move;
