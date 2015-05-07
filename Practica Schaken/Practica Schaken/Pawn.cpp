@@ -22,6 +22,8 @@ bool Pawn::isValidMove(const Move& move, Game& game)
 	bool result = false;
 	if (move.getToX() < 0 || move.getToY() < 0 || move.getToX() >= Gameboard::VELDGROOTTE || move.getToY() >= Gameboard::VELDGROOTTE)
 		return false;
+	if (isValidAttack(move, game))
+		return true;
 	if (color == Piece::BLACK)
 	{
 		if (getX() == move.getToX() && getY() - 1 == move.getToY())
