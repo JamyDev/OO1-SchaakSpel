@@ -24,13 +24,3 @@ Move::Move(Piece* usedPion, int fromX, int fromY, int toX, int toY)
 	newX = toX;
 	newY = toY;
 }
-
-int Move::getToX() const
-{
-	return newX;
-}
-
-int Move::getToY() const
-{
-	return newY;
-}

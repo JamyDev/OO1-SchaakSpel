@@ -15,8 +15,16 @@ class Move
 		Move();
 		//param constructor
 		Move(Piece* usedPiece, int fromX, int fromY, int toX, int toY);
-		int getToX() const;
-		int getToY() const;
+		//Get and set inline-functions for the newX and Y 
+		int getToX() const { return newX; }
+		int getToY() const { return newY; }
+		void setToX(int toX) { newX = toX; }
+		void setToY(int toY) { newY = toY; }
+		//Get and set inline-functions to for the originalX and Y
+		int getFromX() const { return newX; }
+		int getFromY() const { return newY; }
+		void setFromX(int fromX) { originalX = fromX; }
+		void setFromY(int fromY) { originalY = fromY; }
 
 	private:
 		Piece *piece;
