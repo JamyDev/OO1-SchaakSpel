@@ -9,6 +9,7 @@
 #include "Move.h"
 
 class Game;
+class Piece;
 
 class Gameboard 
 {

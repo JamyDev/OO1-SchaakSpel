@@ -9,6 +9,8 @@
 #include "Gameboard.h"
 #include "Piece.h"
 
+class Piece;
+
 enum PlayerColor { WHITE, BLACK };
 
 class Game 
