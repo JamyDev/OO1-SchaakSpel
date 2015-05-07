@@ -24,6 +24,7 @@ Gameboard::Gameboard(Game* spel1)
 
 Gameboard::~Gameboard()
 {
+	resetBoard();
 	// TODO: delete all Pionnen en ander geheugen
 }
 

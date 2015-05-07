@@ -51,12 +51,14 @@ void Game::startGame()
 				error[0] = (char)('A' + move->getFromX());
 				error[1] = (move->getFromY() + 1);
 				ui.showError(error);
+				delete move;
 				continue;
 			}
 
 			if (p->getColor() != activePlayer)
 			{
 				strcpy(error, "Illegal move, this is not your piece.");
+				delete move;
 			
 				ui.showError(error);
 				continue;
@@ -67,6 +69,7 @@ void Game::startGame()
 				move->getToY() < 0 || move->getToY() > 7)
 			{
 				ui.showError("Invalid postion for target.");
+				delete move;
 				continue;
 			}
 
@@ -77,6 +80,7 @@ void Game::startGame()
 			else {
 				ui.showError("Illegal move.");
 			}
+			delete move;
 		}
 		else if (cmd == UI::Command::HELP) 
 		{
