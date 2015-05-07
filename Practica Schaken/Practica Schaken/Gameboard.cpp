@@ -48,7 +48,33 @@ Piece* Gameboard::getPieceAt(int x, int y)
 	}
 }
 
-void Gameboard::initializeBoard()
+void Gameboard::resetBoard()
+{
+	for (int i = 0; i < VELDGROOTTE; ++i)
+	{
+		for (int j = 0; j < VELDGROOTTE; ++j)
+		{
+			if (board[i][j]) {
+				delete board[i][j];
+				board[i][j] = NULL;
+			}
+		}
+	}
+	for (int i = 0; i < 2; ++i)
+	{
+		for (int j = 0; j < 16; ++j)
+		{
+			if (defeated[i][j])
+			{
+				delete defeated[i][j];
+				defeated[i][j] = NULL;
+			}
+
+		}
+	}
+}
+
+void Gameboard::clearBoard()
 {
 	for (int i = 0; i < VELDGROOTTE; ++i)
 	{
@@ -57,6 +83,11 @@ void Gameboard::initializeBoard()
 			board[i][j] = NULL;
 		}
 	}
+}
+
+void Gameboard::initializeBoard()
+{
+	clearBoard();
     // Put Soldiers
     for (int i = 0; i < VELDGROOTTE; ++i)
     {

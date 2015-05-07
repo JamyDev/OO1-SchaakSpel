@@ -23,6 +23,8 @@ class Gameboard
 		~Gameboard();
 		const static int VELDGROOTTE = 8;
 		void initializeBoard();
+		void clearBoard();
+		void resetBoard();
 		bool move(Piece* piece, Move& move);
 		bool isPieceAt(int x, int y);
 		Piece* getPieceAt(int x, int y);

@@ -8,6 +8,7 @@
 #include <iostream>
 #include "Game.h"
 #include "Move.h"
+#include "FileIO.h"
 
 Game::Game()
 {
@@ -87,11 +88,13 @@ void Game::startGame()
 		}
 		else if (cmd == UI::Command::LOAD)
 		{
-
+			activePlayer = (Game::PlayerColor) FileIO::getActivePlayer();
+			gameboard->clearBoard();
+			FileIO::getBoardFromFile(gameboard);
 		}
 		else if (cmd == UI::Command::SAVE)
 		{
-
+			FileIO::putToFile(*this);
 		}
 	}
 }
