@@ -332,6 +332,37 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="500e544e-a57e-4bf0-9123-49b437988ce4"
+            name="getPromotedPiece"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a3348ab8-4b3b-4ac3-95f7-39ddea8bd9dd"
+                  name="char type"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="9e9a13f5-378b-43cf-833d-940be8ae56aa"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="6c8e7ad7-876c-4863-8e4d-eaa71dbebafc"
+                      LastKnownName="Piece*"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -456,15 +487,15 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="11433db6-3faa-49fb-aef0-ed430aecb0ef"
+                  Id="80e10458-8002-4c98-a26a-9578c932c9f0"
                   name="const Move&amp; move"
                   direction="In"
                   isUnique="false" />
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="615d192e-c56b-4d5f-9565-68f1d0d64703"
-                  name="const Game&amp; game"
+                  Id="cab0cea4-7d35-40e3-87a0-f5e983a31fa0"
+                  name="Game&amp; game"
                   direction="In"
                   isUnique="false" />
               </operationHasOwnedParameters>
@@ -1022,6 +1053,24 @@
                 value="16" />
             </upperValueInternal>
           </property>
+          <property
+            Id="83313013-1242-44ac-bd97-8f29594ca66b"
+            name="const int VELDGROOTE"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <defaultValue>
+              <literalString
+                Id="384b5865-9796-415d-8100-4e5c47135a18"
+                name="DefaultValue"
+                value="8" />
+            </defaultValue>
+          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
@@ -1286,6 +1335,20 @@
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="bcc96454-0cef-4eeb-8127-2e58f0bcbed4"
+                  name="Piece&amp; piece"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="9634a3bd-5da3-4304-8771-94824bd87dc7"
+                  name="int color"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
           <operation
@@ -1327,6 +1390,44 @@
                     <undefinedTypeMoniker
                       Id="7275148c-4238-40cf-b25e-d33888e38fc6"
                       LastKnownName="void"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="98ed9440-7675-46f5-bf37-e0b6b48a1bc0"
+            name="promote"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="45c98ef5-a774-4063-9ff5-d58f569f72a5"
+                  name="Piece* piece"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b7e84cff-a875-4c5f-9204-be5f2a56ee99"
+                  name="char type"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="2694525f-7834-4e18-9371-e0bf0526cc0c"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="ad172973-7e09-4c78-9d40-cffc527aa8ce"
+                      LastKnownName="bool"
                       LastKnownLocation="ModelingProject1.uml" />
                   </type_NamedElement>
                 </parameter>

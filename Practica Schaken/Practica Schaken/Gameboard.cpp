@@ -175,7 +175,7 @@ void Gameboard::initializeDefeated()
 		}
 	}
 }
-void Gameboard::addToDefeated(Piece& piece, enum Piece::Color color)
+void Gameboard::addToDefeated(Piece& piece, int color)
 {
 	for (int i = VELDGROOTTE * 2 - 1; i >= 0; --i)
 	{

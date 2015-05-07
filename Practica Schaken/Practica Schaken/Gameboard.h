@@ -36,6 +36,6 @@ class Gameboard
 		void resetBoard();
 		void initializeBoard();
 		void initializeDefeated();
-		void addToDefeated(Piece& piece, enum Piece::Color color);
+		void addToDefeated(Piece& piece, int color);
 };
 #endif

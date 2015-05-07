@@ -159,6 +159,24 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation Id="1f3c4eb2-ca95-41e1-a989-deb7873f8ad1" name="getPromotedPiece" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="500e544e-a57e-4bf0-9123-49b437988ce4" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="851f5945-c9c0-4eb2-bfd2-265a9b0bb775" name="char type" direction="In" isUnique="false">
+                  <elementDefinition Id="a3348ab8-4b3b-4ac3-95f7-39ddea8bd9dd" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="973fb6db-5e81-4800-a019-1bd64bb2aa60" direction="Return" isUnique="false">
+                  <elementDefinition Id="9e9a13f5-378b-43cf-833d-940be8ae56aa" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="50ed8665-ec31-46e1-8dd5-c2318f497c7b" LastKnownName="Piece*" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
@@ -225,13 +243,13 @@
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="d57929ad-6a38-4bdb-a664-288996c6fa87" name="const Move&amp; move" direction="In" isUnique="false">
-                  <elementDefinition Id="11433db6-3faa-49fb-aef0-ed430aecb0ef" />
+                <parameter Id="3cd84570-d2af-47da-a28b-f403a2599ae2" name="const Move&amp; move" direction="In" isUnique="false">
+                  <elementDefinition Id="80e10458-8002-4c98-a26a-9578c932c9f0" />
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="99e2ecb9-58dd-46a0-8cb8-293f2a8c2ee3" name="const Game&amp; game" direction="In" isUnique="false">
-                  <elementDefinition Id="615d192e-c56b-4d5f-9565-68f1d0d64703" />
+                <parameter Id="23cf6dd9-76c9-4c14-af92-71496ba3808d" name="Game&amp; game" direction="In" isUnique="false">
+                  <elementDefinition Id="cab0cea4-7d35-40e3-87a0-f5e983a31fa0" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -545,6 +563,14 @@
             </upperValueInternal>
             <elementDefinition Id="004a1c15-4ac1-44a1-9b80-c8eb1a4de702" />
           </property>
+          <property Id="51455e37-49b8-47a1-b6db-a157269a8749" name="const int VELDGROOTE" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="83313013-1242-44ac-bd97-8f29594ca66b" />
+            <defaultValue>
+              <literalString Id="215ea7a5-def1-4461-a72b-8f7230128558" name="DefaultValue" value="8">
+                <elementDefinition Id="384b5865-9796-415d-8100-4e5c47135a18" />
+              </literalString>
+            </defaultValue>
+          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation Id="2b35319f-c2eb-4195-b612-7fd7d4e95ebc" name="Gameboard" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
@@ -692,6 +718,16 @@
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="67f3bbe3-9f9a-4424-8322-c4c022401a73" name="Piece&amp; piece" direction="In" isUnique="false">
+                  <elementDefinition Id="bcc96454-0cef-4eeb-8127-2e58f0bcbed4" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="1839be50-dd5f-48de-81a2-3257bd58e8af" name="int color" direction="In" isUnique="false">
+                  <elementDefinition Id="9634a3bd-5da3-4304-8771-94824bd87dc7" />
+                </parameter>
+              </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
           <operation Id="763982c7-e5bb-42fd-920d-45e1c446c8bd" name="putPiece" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
@@ -717,6 +753,29 @@
                   <elementDefinition Id="5273316a-0918-4602-87a7-f0ea9066754f" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="b1b19ca1-b51d-47fb-89cb-e99f291ee4ac" LastKnownName="void" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="945f5e3c-6d13-4e89-a7f1-19f516665ef5" name="promote" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="98ed9440-7675-46f5-bf37-e0b6b48a1bc0" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="cd5bca05-8ec8-42bd-a180-a656aac17540" name="Piece* piece" direction="In" isUnique="false">
+                  <elementDefinition Id="45c98ef5-a774-4063-9ff5-d58f569f72a5" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="c3cc8dd9-e950-42e8-8974-193de1e587af" name="char type" direction="In" isUnique="false">
+                  <elementDefinition Id="b7e84cff-a875-4c5f-9204-be5f2a56ee99" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="09e0b1a9-b314-4130-b2ae-bc026440a10c" direction="Return" isUnique="false">
+                  <elementDefinition Id="2694525f-7834-4e18-9371-e0bf0526cc0c" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="5257358a-2cc6-47d5-84f4-75800edcb25f" LastKnownName="bool" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
