@@ -34,22 +34,30 @@ void FileIO::putToFile(Game& game)
 	{
 		for (int j = 0; j < Gameboard::VELDGROOTTE; ++j)
 		{
-			if (game.getGameboard()->getPieceAt(i, j)->getColor() == Piece::Color::WHITE)
-				file.put('W');
+			if (game.getGameboard()->getPieceAt(i, j) == NULL)
+			{
+				file.put(' ');
+				file.put(' ');
+			}
 			else
-				file.put('B');
-			if (game.getGameboard()->getPieceAt(i, j)->getType() == Piece::Type::ROOK)
-				file.put('R');
-			else if (game.getGameboard()->getPieceAt(i, j)->getType() == Piece::Type::PAWN)
-				file.put('P');
-			else if (game.getGameboard()->getPieceAt(i, j)->getType() == Piece::Type::BISHOP)
-				file.put('B');
-			else if (game.getGameboard()->getPieceAt(i, j)->getType() == Piece::Type::KNIGHT)
-				file.put('H');
-			else if (game.getGameboard()->getPieceAt(i, j)->getType() == Piece::Type::QUEEN)
-				file.put('Q');
-			else if (game.getGameboard()->getPieceAt(i, j)->getType() == Piece::Type::KING)
-				file.put('K');
+			{
+				if (game.getGameboard()->getPieceAt(i, j)->getColor() == Piece::Color::WHITE)
+					file.put('W');
+				else
+					file.put('B');
+				if (game.getGameboard()->getPieceAt(i, j)->getType() == Piece::Type::ROOK)
+					file.put('R');
+				else if (game.getGameboard()->getPieceAt(i, j)->getType() == Piece::Type::PAWN)
+					file.put('P');
+				else if (game.getGameboard()->getPieceAt(i, j)->getType() == Piece::Type::BISHOP)
+					file.put('B');
+				else if (game.getGameboard()->getPieceAt(i, j)->getType() == Piece::Type::KNIGHT)
+					file.put('H');
+				else if (game.getGameboard()->getPieceAt(i, j)->getType() == Piece::Type::QUEEN)
+					file.put('Q');
+				else if (game.getGameboard()->getPieceAt(i, j)->getType() == Piece::Type::KING)
+					file.put('K');
+			}
 			file.put('|');
 		}
 		file.put('\n');
