@@ -5,9 +5,9 @@
 
 #ifndef MOVE_H
 #define MOVE_H
-#include "Piece.h"
 
 class Gameboard;
+class Piece;
 class Move
 {
 	public:
@@ -20,7 +20,7 @@ class Move
 		int getToY() const { return newY; }
 		void setToX(int toX) { newX = toX; }
 		void setToY(int toY) { newY = toY; }
-		//Get and set inline-functions to for the originalX and Y
+		//Get and set inline-functions for the originalX and Y
 		int getFromX() const { return newX; }
 		int getFromY() const { return newY; }
 		void setFromX(int fromX) { originalX = fromX; }

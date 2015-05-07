@@ -7,6 +7,11 @@
 #define PIECE_H 1
 #include "Game.h"
 #include "Gameboard.h"
+
+class Move;
+class Gameboard;
+class Game;
+
 class Piece
 {
 	public:
