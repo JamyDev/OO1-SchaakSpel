@@ -115,36 +115,6 @@ bool Gameboard::move(Piece* piece, Move& move)
 }
 
 
-void Gameboard::printBoard()
-{
-	std::cout << "\n";
-	std::cout << "\n-------------------------------------\n" << "|   |";
-	for (int i = 0; i < VELDGROOTTE; ++i)
-		std::cout << " " << (char)('A' + i) << " |";
-	
-	std::cout << "\n=====================================\n";
-	for (int i = VELDGROOTTE - 1; i >= 0; --i)
-	{
-		std::cout << "| " << (i+1) << " |";
-		for (int j = 0; j < VELDGROOTTE; ++j)
-		{
-			char c = ' ';
-			Piece* p = board[i][j];
-			if (p != NULL)
-				c = p->getSymbol();
-
-			if (p != NULL && p->getColor() == BLACK)
-				std::cout << "_" << c << "_|";
-			else
-				std::cout << " " << c << " |";
-
-		}
-		std::cout << "\n-------------------------------------\n";
-	}
-
-	std::cout << "\n";
-}
-
 void Gameboard::initializeDefeated()
 {
 	for (int i = 0; i < 2; ++i)
