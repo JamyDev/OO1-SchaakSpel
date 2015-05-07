@@ -25,15 +25,15 @@ char Piece::getSymbol() const
 		case PAWN:
 			return '^';
 		case ROOK:
-			return '#';
+			return 'R';
 		case KNIGHT:
-			return '%';
+			return 'H';
 		case BISHOP:
-			return '&';
+			return 'B';
 		case KING:
-			return '+';
+			return 'K';
 		case QUEEN:
-			return 'W';
+			return 'Q';
 		default:
 			return ' ';
 	}

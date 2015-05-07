@@ -76,24 +76,24 @@ void Gameboard::initializeBoard()
 	board[0][7]->setNewPos(7, 0);
 
     // Put Knights
-    board[7][1] = new Knight(Piece::Color::BLACK);
-	board[7][1]->setNewPos(1, 7);
-    board[7][6] = new Knight(Piece::Color::BLACK);
-	board[7][6]->setNewPos(6, 7);
-    board[0][1] = new Knight(Piece::Color::WHITE);
-	board[0][1]->setNewPos(1, 0);
-    board[0][6] = new Knight(Piece::Color::WHITE);
-	board[0][6]->setNewPos(6, 0);
+    board[7][2] = new Knight(Piece::Color::BLACK);
+	board[7][2]->setNewPos(2, 7);
+    board[7][5] = new Knight(Piece::Color::BLACK);
+	board[7][5]->setNewPos(5, 7);
+    board[0][2] = new Knight(Piece::Color::WHITE);
+	board[0][2]->setNewPos(2, 0);
+    board[0][5] = new Knight(Piece::Color::WHITE);
+	board[0][5]->setNewPos(5, 0);
     
     // Put Bischops
-    board[7][2] = new Bishop(Piece::Color::BLACK);
-	board[7][2]->setNewPos(2, 7);
-    board[7][5] = new Bishop(Piece::Color::BLACK);
-	board[7][5]->setNewPos(5, 7);
-    board[0][2] = new Bishop(Piece::Color::WHITE);
-	board[0][2]->setNewPos(2, 0);
-    board[0][5] = new Bishop(Piece::Color::WHITE);
-	board[0][5]->setNewPos(5, 0);
+    board[7][1] = new Bishop(Piece::Color::BLACK);
+	board[7][1]->setNewPos(1, 7);
+    board[7][6] = new Bishop(Piece::Color::BLACK);
+	board[7][6]->setNewPos(6, 7);
+    board[0][1] = new Bishop(Piece::Color::WHITE);
+	board[0][1]->setNewPos(1, 0);
+    board[0][6] = new Bishop(Piece::Color::WHITE);
+	board[0][6]->setNewPos(6, 0);
 
     // King and Queen
     board[7][3] = new King(Piece::Color::BLACK);

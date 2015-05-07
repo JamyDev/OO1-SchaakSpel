@@ -9,8 +9,6 @@
 #include "Game.h"
 #include "Move.h"
 
-void flush_stdin();
-
 Game::Game()
 {
 	gameboard = new Gameboard(this);
@@ -38,21 +36,28 @@ void Game::startGame()
 			if (move->getFromX() < 0 || move->getFromX() > 7 ||
 				move->getFromY() < 0 || move->getFromY() > 7)
 			{
-				std::cout << "Invalid postion for source.\n";
+				ui.showError("Invalid postion for source.");
 				continue;
 			}
 
 			Piece* p = move->getPiece();
 
+			char error[30];
+
 			if (p == NULL)
 			{
-				std::cout << (char) ('A' + move->getFromX()) << (move->getFromY() + 1) << " doesn't exist.";
+				strcpy(error, "__ doesn't exist.");
+				error[0] = (char)('A' + move->getFromX());
+				error[1] = (move->getFromY() + 1);
+				ui.showError(error);
 				continue;
 			}
 
 			if (p->getColor() != activePlayer)
 			{
-				std::cout << "Illegal move, it's " << ((activePlayer == WHITE) ? "white's" : "black's") << " turn.";
+				strcpy(error, "Illegal move, this is not your piece.");
+			
+				ui.showError(error);
 				continue;
 			}
 
@@ -60,7 +65,7 @@ void Game::startGame()
 			if (move->getToX() < 0 || move->getToX() > 7 ||
 				move->getToY() < 0 || move->getToY() > 7)
 			{
-				std::cout << "Invalid postion for target.";
+				ui.showError("Invalid postion for target.");
 				continue;
 			}
 
@@ -69,10 +74,25 @@ void Game::startGame()
 				activePlayer = (activePlayer == WHITE) ? BLACK : WHITE;
 			}
 			else {
-				std::cout << "Illegal move.";
+				ui.showError("Illegal move.");
 			}
 		}
-			
+		else if (cmd == UI::Command::HELP) 
+		{
+			ui.showHelp();
+		}
+		else if (cmd == UI::Command::QUIT)
+		{
+			running = false;
+		}
+		else if (cmd == UI::Command::LOAD)
+		{
+
+		}
+		else if (cmd == UI::Command::SAVE)
+		{
+
+		}
 	}
 }
 

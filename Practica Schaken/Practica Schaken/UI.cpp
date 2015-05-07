@@ -1,4 +1,5 @@
 #include <iostream>
+#include <conio.h>
 #include "UI.h"
 #include "Game.h"
 #include "Move.h"
@@ -18,18 +19,23 @@ void UI::printHelpToConsole()
 		<< " - ?: Shows this help text." << "\n"
 		<< " - s: Saves the game." << "\n"
 		<< " - l: Loads the game." << "\n"
-		<< " - q: Exit the game." << "\n";
+		<< " - q: Exit the game." << "\n"
+		<< "Press any key to continue...";
+	_getche();
+}
+
+void UI::showHelp()
+{
+	if (uiType == CONSOLE)
+		printHelpToConsole();
 }
 
 void UI::printActivePlayerToConsole(Game& game)
 {
-	std::cout << "Active player: ";
-	if (game.getActivePlayer() == Game::PlayerColor::WHITE) {
-		std::cout << "White\n";
-	}
-	else {
-		std::cout << "Black\n";
-	}
+	std::cout
+		<< "["
+		<< ((game.getActivePlayer() == Game::PlayerColor::WHITE) ? "WHITE" : "BLACK")
+		<< "] Please enter a command (Or '?' for help): ";
 }
 
 void UI::displayBoard(Gameboard& board)
@@ -64,23 +70,38 @@ enum UI::Command UI::askCommandConsole(Game& game)
 {
 	char cmdC, fromC, toC;
 	int fromX, fromY, toX, toY;
-
-	scanf("%c %c%i %c%i", &cmdC, &fromC, &fromY, &toC, &toY);
-	flush_stdin();
-
-	fromY--;
-	toY--;
-
-	fromX = (toupper(fromC) - 'A');
-	toX = (toupper(toC) - 'A');
+	cmdC = _getche();
 
 	Command cmd = getCommand(cmdC);
-	if (cmd == MOVE)
+	
+	if (cmd == Command::MOVE)
 	{
+		scanf(" %c%i %c%i", &fromC, &fromY, &toC, &toY);
+		flush_stdin();
+	
+		fromY--;
+		toY--;
+
+		fromX = (toupper(fromC) - 'A');
+		toX = (toupper(toC) - 'A');
+
 		lastMove = new Move(game.getGameboard()->getPieceAt(fromX, fromY), fromX, fromY, toX, toY);		
 	}
 
 	return cmd;
+}
+
+void UI::showError(char* error)
+{
+	if (uiType == CONSOLE)
+	{
+		printErrorToConsole(error);
+	}
+}
+
+void UI::printErrorToConsole(char* error)
+{
+	std::cout << error << "\n";
 }
 
 void UI::printBoardToConsole(Gameboard& board)
@@ -102,7 +123,7 @@ void UI::printBoardToConsole(Gameboard& board)
 				c = p->getSymbol();
 
 			if (p != NULL && p->getColor() == Piece::Color::BLACK)
-				std::cout << "_" << c << "_|";
+				std::cout << "[" << c << "]|";
 			else
 				std::cout << " " << c << " |";
 

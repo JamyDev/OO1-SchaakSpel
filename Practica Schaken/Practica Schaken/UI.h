@@ -13,6 +13,8 @@ class UI {
 		void displayBoard(Gameboard& board);
 		enum Command askCommand(Game& game);
 		void showActivePlayer(Game& game);
+		void showError(char* error);
+		void showHelp();
 		Move* getLastMove();
 	private:
 		static const enum UIType {CONSOLE};
@@ -21,6 +23,7 @@ class UI {
 		void printBoardToConsole(Gameboard& board);
 		void printActivePlayerToConsole(Game& game);
 		void printHelpToConsole();
+		void printErrorToConsole(char* error);
 		static void flush_stdin();
 		static enum UI::Command getCommand(char c);
 		enum Command askCommandConsole(Game& game);
