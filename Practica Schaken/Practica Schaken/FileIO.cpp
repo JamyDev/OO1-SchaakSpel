@@ -64,25 +64,31 @@ void FileIO::getBoardFromFile(Gameboard* gameboard)
 	bool first = true;
 	Piece::Color color = Piece::WHITE;
 	ifstream file("game.txt");
-
 	if (!file)
 		return;
+
+	Rook* rook = NULL;
+	Bishop* bishop = NULL;
+	Knight* knight = NULL;
+	King* king = NULL;
+	Queen* queen = NULL;
+	Pawn* pawn = NULL;
 	
-	while ((ch = file.get()) != EOF && ch != '\n')
+	while ((file.get(ch)) && ch != EOF && ch != '\n')
 		;
-	while ((ch = file.get() != EOF))
+	while ((file.get(ch) && ch != EOF))
 	{
 		if (ch == '|')
 		{
 			x++;
 			first = true;
-			ch = file.get();
+			file.get(ch);
 		}
 		if (ch == ' ' && first)
 		{
 			first = false;
 			gameboard->putPiece(NULL, x, y);
-			file.get();
+			file.get(ch);
 		}
 		if (ch == 'B' && first)
 		{
@@ -94,35 +100,37 @@ void FileIO::getBoardFromFile(Gameboard* gameboard)
 			first = false;
 			color = Piece::WHITE;
 		}
-		switch (ch = file.get() && !first)
-		{
-		case 'R':
-			Rook* piece = new Rook(color);
-			gameboard->putPiece(piece, x, y);
-			break;
-		case 'B':
-			Bishop* piece = new Bishop(color);
-			gameboard->putPiece(piece, x, y);
-			break;
-		case 'H':
-			Knight* piece = new Knight(color);
-			gameboard->putPiece(piece, x, y);
-			break;
-		case 'K':
-			King* piece = new King(color);
-			gameboard->putPiece(piece, x, y);
-			break;
-		case 'Q':
-			Queen* piece = new Queen(color);
-			gameboard->putPiece(piece, x, y);
-			break;
-		case 'P':
-			Pawn* piece = new Pawn(color);
-			gameboard->putPiece(piece, x, y);
-			break;
-		default:
-			break;
-		}
+		file.get(ch);
+		if (!first)
+			switch (ch)
+			{
+			case 'R':
+				rook = new Rook(color);
+				gameboard->putPiece(rook, x, y);
+				break;
+			case 'B':
+				bishop = new Bishop(color);
+				gameboard->putPiece(bishop, x, y);
+				break;
+			case 'H':
+				knight = new Knight(color);
+				gameboard->putPiece(knight, x, y);
+				break;
+			case 'K':
+				king = new King(color);
+				gameboard->putPiece(king, x, y);
+				break;
+			case 'Q':
+				queen = new Queen(color);
+				gameboard->putPiece(queen, x, y);
+				break;
+			case 'P':
+				pawn = new Pawn(color);
+				gameboard->putPiece(pawn, x, y);
+				break;
+			default:
+				break;
+			}
 		if (ch == '\n')
 		{
 			x = 0;
@@ -139,7 +147,7 @@ int FileIO::getActivePlayer()
 	if (!file)
 		return -1;
 
-	while ((ch = file.get()) == '|')
+	while (file.get(ch) && ch == '|')
 		;
 	if (ch == 'W')
 	{
@@ -151,6 +159,4 @@ int FileIO::getActivePlayer()
 		file.close();
 		return 1;
 	}
-
-
 }
