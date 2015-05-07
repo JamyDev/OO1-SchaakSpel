@@ -10,9 +10,9 @@ class Pawn: public Piece
 		Pawn();
 		Pawn(enum Color colornum);
 		bool isValidMove(const Move& move, Game& game);
-		bool isValidAttack(const Move& move, const Game& game) const;
 		void setPos(int newX, int newY);
 	private:
+		bool isValidAttack(const Move& move, const Game& game) const;
 		bool isFirst;
 };
 #endif

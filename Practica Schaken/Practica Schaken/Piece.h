@@ -15,9 +15,9 @@ class Piece
 {
 	public:
 		//Defines which color the piece has.
-		static enum Color { WHITE, BLACK};
+		static const enum Color { WHITE, BLACK};
 		//A piece can be any of the following types, possible moves and rules are based on these types.
-		enum Type { PAWN, KNIGHT, ROOK, BISHOP, QUEEN, KING };
+		static const enum Type { PAWN, KNIGHT, ROOK, BISHOP, QUEEN, KING };
 
 		enum Color getColor() const;
 		char getSymbol() const;

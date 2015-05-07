@@ -25,7 +25,7 @@ class UI {
 		void printHelpToConsole();
 		void printErrorToConsole(char* error);
 		static void flush_stdin();
-		static enum UI::Command getCommand(char c);
+		static enum Command getCommand(char c);
 		enum Command askCommandConsole(Game& game);
 };
 #endif
