@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/PROGRAM FILES (X86)/MICROSOFT VISUAL STUDIO 12.0/COMMON7/IDE/EXTENSIONS/MICROSOFT/ARCHITECTURE TOOLS/EXTENSIBILITY/Logging/CodeGenLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log" Label="Code Generation/Text Transformation Log">
+  <MessageClass Name="Message" Label="Message" Option="Show informational messages" />
+  <MessageClass Name="Warning" Label="Warning" Option="Show warnings" />
+  <MessageClass Name="Error" Label="Error" Option="Show errors" />
+  <MessageClass Name="Property" Label="Property" Option="Show metadata" />
+  <MessageClass Name="Diagnostic" Label="Message" Option="Show diagnostic messages" />
+  <Message Timestamp="2015-05-07T15:44:04" Importance="High" Text="Code generation or text transformation started." />
+  <Error Timestamp="2015-05-07T15:44:04" Importance="High" Text="No templates were found to process.  Configure templates by choosing 'Configure Default Code Generation Settings...' from the 'Architecture' menu, or change the selection for which code generation is launched." />
+  <Message Timestamp="2015-05-07T15:44:04" Importance="Diagnostic" Text="The selection included 21 elements which were not bound to a template." />
+  <Warning Timestamp="2015-05-07T15:44:04" Importance="Medium" Text="'ModelingProject1::GameBoard' -  (Class): no bound template." />
+  <Warning Timestamp="2015-05-07T15:44:04" Importance="Medium" Text="'ModelingProject1::FileIO' -  (Class): no bound template." />
+  <Message Timestamp="2015-05-07T15:44:04" Importance="Diagnostic" Text="'ModelingProject1::' -  (Association): no bound template." />
+  <Warning Timestamp="2015-05-07T15:44:04" Importance="Medium" Text="'ModelingProject1::Game' -  (Class): no bound template." />
+  <Message Timestamp="2015-05-07T15:44:04" Importance="Diagnostic" Text="'ModelingProject1::' -  (Association): no bound template." />
+  <Warning Timestamp="2015-05-07T15:44:04" Importance="Medium" Text="'ModelingProject1::UI' -  (Class): no bound template." />
+  <Message Timestamp="2015-05-07T15:44:04" Importance="Diagnostic" Text="'ModelingProject1::' -  (Association): no bound template." />
+  <Warning Timestamp="2015-05-07T15:44:04" Importance="Medium" Text="'ModelingProject1::Piece' -  (Class): no bound template." />
+  <Warning Timestamp="2015-05-07T15:44:04" Importance="Medium" Text="'ModelingProject1::Move' -  (Class): no bound template." />
+  <Warning Timestamp="2015-05-07T15:44:04" Importance="Medium" Text="'ModelingProject1::Pawn' -  (Class): no bound template." />
+  <Warning Timestamp="2015-05-07T15:44:04" Importance="Medium" Text="'ModelingProject1::Rook' -  (Class): no bound template." />
+  <Message Timestamp="2015-05-07T15:44:04" Importance="Diagnostic" Text="'41867da7-6a46-449f-92ea-64c942f3f8ad' -  (Generalization): no bound template." />
+  <Message Timestamp="2015-05-07T15:44:04" Importance="Diagnostic" Text="'1803506d-3c9f-490a-a6dc-a5e7c5cb71fe' -  (Generalization): no bound template." />
+  <Warning Timestamp="2015-05-07T15:44:04" Importance="Medium" Text="'ModelingProject1::Knight' -  (Class): no bound template." />
+  <Message Timestamp="2015-05-07T15:44:04" Importance="Diagnostic" Text="'f0c3a4c0-ee39-4a26-bcc9-b882a201dd5f' -  (Generalization): no bound template." />
+  <Message Timestamp="2015-05-07T15:44:04" Importance="Diagnostic" Text="'95fe1686-4ef4-4082-8758-b5786a29d4cb' -  (Generalization): no bound template." />
+  <Warning Timestamp="2015-05-07T15:44:04" Importance="Medium" Text="'ModelingProject1::Bishop' -  (Class): no bound template." />
+  <Message Timestamp="2015-05-07T15:44:04" Importance="Diagnostic" Text="'aab63822-a8c2-48a6-98b7-7ee5b8ae409c' -  (Generalization): no bound template." />
+  <Message Timestamp="2015-05-07T15:44:04" Importance="Diagnostic" Text="'c1026a79-c082-4da9-ab24-2618d0da54cd' -  (Generalization): no bound template." />
+  <Warning Timestamp="2015-05-07T15:44:04" Importance="Medium" Text="'ModelingProject1::King' -  (Class): no bound template." />
+  <Warning Timestamp="2015-05-07T15:44:04" Importance="Medium" Text="'ModelingProject1::Queen' -  (Class): no bound template." />
+  <Message Timestamp="2015-05-07T15:44:04" Importance="High" Text="Code generation complete. Errors: 1. Warnings: 12." />
+</Log>
