@@ -159,3 +159,8 @@ void Gameboard::addToDefeated(Piece& piece, enum Piece::Color color)
 	defeated[color][0] = &piece;
 
 }
+
+void Gameboard::putPiece(Piece* piece, int x, int y) 
+{
+	board[y][x] = piece;
+}

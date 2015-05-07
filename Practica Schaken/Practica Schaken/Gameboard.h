@@ -26,6 +26,7 @@ class Gameboard
 		bool move(Piece* piece, Move& move);
 		bool isPieceAt(int x, int y);
 		Piece* getPieceAt(int x, int y);
+		void putPiece(Piece* piece, int x, int y);
 	private:
 		Game* game;
 		Move* history;
